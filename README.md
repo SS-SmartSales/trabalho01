@@ -7,7 +7,6 @@ Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 Integrantes do grupo<br>
 Júlia Suzano Fraga: juliasufraga18@gmail.com<br>
 Betriz Auer Mariano: biaauer03@gmai.com<br>
-...
 
 ### 2.INTRODUÇÃO E MOTIVAÇAO<br>
 
