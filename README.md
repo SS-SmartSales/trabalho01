@@ -20,55 +20,46 @@ Betriz Auer Mariano: biaauer03@gmai.com<br>
 ### 4.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
-![Alt text](https://github.com/discipbd1/trab01/blob/master/balsamiq.png?raw=true "Title")
-![Arquivo PDF do Protótipo Balsamiq feito para Empresa Devcom](https://github.com/discipint/trabalho01/blob/master/arquivos/EmpresaDevcom.pdf?raw=true "Empresa Devcom")
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/menu%20incial%20SS.jpg?raw=true "Title")
+![Arquivo PDF do Protótipo Balsamiq feito para SmartSales](https://github.com/discipint/trabalho01/blob/master/arquivos/EmpresaDevcom.pdf?raw=true "Empresa Devcom")
 
-## Marco de Entrega 02 em: (08/05/2019)<br>
 
 #### 4.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-    a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
-    b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!
-    
-> A Empresa DevCom precisa inicialmente dos seguintes relatórios:
-* Relatório que informe quais são os gerentes de cada departamento incluindo as seguintes informações: número do departamento,  nome do departamento, e nome do gerente.
-* Relatório de empregados por projeto incluindo as seguintes informações: número do projeto, nome do projeto, rg do empregado, nome do empregado e quantidade de horas de trabalho do empregado alocadas ao projeto.
-* Relatório de empregados com dependentes incluindo as seguintes informações: rg do empregado, nome do empregado, nome do dependente, tipo de relação, data de nascimento do dependente e sexo do dependente.
-* Relatório com a quantidade de empregados por cada departamento incluindo as seguintes informações: nome do departamento, supervisor e quantidade de empregados alocados no departamento.
-* Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
  
-## Marco de Entrega 03 em: (13/05/2019)<br>
+> Para que o programa seja iniciado, ele precisa dos seguintes relatórios:
+* Informações dos fornecedores com código, nome, ramo e contato.
+* Informação do produto com código, nome, fornecedor, data de compra, quantidade comprada, preço de compra, preço de venda. Caso seja a primeira vez que o produto seja comprado, ele será inserido à tabela dos produtos. Caso não, a quantidade será somada a já existente.
+* Informação dos clientes, que serão cadastrados ao fazerem sua primeira compra, com código, nome, idade e sexo.
+> Para que funcione, precisa dos seguintes relatórios:
+* Venda (funciona como uma nota fiscal) contendo o número da nota, o código do produto, a quantidade vendida, o desconto, se houver e o cliente para o qual o produto foi vendido.
+> Com esses relatórios, o sistema consegue responder às seguintes questões:
+* Quantos e quais produtos estão em estoque e foram vendidos;
+* Qual o produto menos e mais vendido;
+* Quanto foi a despesa e o lucro com os produtos;
+* Qual o público do alvo dos produtos;
+* Em quando tempo o dono da empresa precisa repor os produtos no estoque.
+ 
 
 #### 4.2 TABELA DE DADOS DO SISTEMA:
-    a) Esta tabela deve conter todos os atributos do sistema e um mínimo de 10 linhas/registros de dados.
-    b) Esta tabela tem a intenção de simular um relatório com todos os dados que serão armazenados 
-    e deve ser criada antes do modelo conceitual
-    c) Após criada esta tabela não deve ser modificada, pois será comparada com os resultados finais na conclusão do trabalho
-    
-![Exemplo de Tabela de dados da Empresa Devcom](https://github.com/discipint/trabalho01/blob/master/arquivos/TabelaEmpresaDevCom_sample.xlsx?raw=true "Tabela - Empresa Devcom")
 
+>A tabela aqui anexada contém os atributos do sistema SmartSales. Ela simula um relatório com todos os dados que serão armazenados.
+
+    PRODUTOS: tabela que contém as informações de todos os produtos comercializados pela empresa.
+    FORNECEDORES: tabela que contém as informações de todos os fornecedores da loja.
+    VENDAS: tabela que contém as informações de todas as vendas em um certo período. É importante para calcular o lucro e o número de produtos vendidos.
+    CLIENTE: tabela que contém as informações de todos os clientes da loja, cadastrados ao realizar a primeira compra na loja.
     
-## Marco de Entrega 04 em: (15/05/2019)<br>
+![Exemplo de Tabela de dados da SmartSales](https://github.com/SS-SmartSales/trabalho01/blob/master/nova%20PlanilhaSmartsSales%20%20em%20ods.ods?raw=true "Tabela - SmartSales")
 
 ### 5.MODELO CONCEITUAL<br>
-    A) NOTACAO ENTIDADE RELACIONAMENTO 
-        * Para nosso prótótipo limitaremos o modelo conceitual nas 5 principais entidades do escopo
-        * O protótipo deve possui no mínimo duas relações N para N
-        * o mínimo de entidades do modelo conceitual será igual a 5
-        
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/modelo%20conceitual%20ss.png?raw=true "Modelo Conceitual")
+
+> O modelo conceitual apresenta as entidades existentes no programa e os relacionamentos que elas possuem entre si.
     
-    B) QUALIDADE 
-        Garantir que a semântica dos atributos seja clara no esquema
-        Criar o esquema de forma a garantir a redução de informação redundante, possibilidade de valores null, 
-        e tuplas falsas
-    
-        
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/modelo%20conceitual.jpg?raw=true "Modelo Conceitual")
     
 #### 5.1 Validação do Modelo Conceitual
-    [Grupo01]: [Nomes dos que participaram na avaliação]
-    [Grupo02]: [Nomes dos que participaram na avaliação]
-    
-## Marco de Entrega 05 em: (20/05/2019)<br>
+    [Grupo01]: [Lucas Tejada Fabres e Caio Simão Lessa]
+    [Grupo02]: [Rodolfo Luiz de Oliveira e Gustavo Olmo Santana]
 
 #### 5.2 DESCRIÇÃO DOS DADOS 
     [objeto]: [descrição do objeto]
