@@ -21,7 +21,7 @@ Betriz Auer Mariano: biaauer03@gmai.com<br>
 Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/menu%20incial%20SS.jpg?raw=true "Title")
-![Arquivo PDF do Protótipo Balsamiq feito para SmartSales](https://github.com/discipint/trabalho01/blob/master/arquivos/EmpresaDevcom.pdf?raw=true "Empresa Devcom")
+![Arquivo PDF do Protótipo Balsamiq feito para SmartSales](https://github.com/SS-SmartSales/trabalho01/blob/master/novo%20Mini%20Mundo.pdf?raw=true "Empresa Devcom")
 
 
 #### 4.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
