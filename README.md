@@ -102,21 +102,21 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     /* Lógico_1: */
 
     CREATE TABLE PRODUTO (
-     codigo integer PRIMARY KEY,
+     codigo integer,
      nome varchar(30),
      fornecedor integer,
      tipo varchar(30),
      quantidade_adquirida integer,
-     data_aquisicao date,
      preco_aquisicao float,
+     data_aquisicao date,
      preco_venda float
     );
 
     CREATE TABLE CLIENTE (
      codigo integer,
      nome varchar(100),
-     sexo char,
      idade integer,
+     sexo char
     );
     
     CREATE TABLE COMPRA (
@@ -194,20 +194,20 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
      fornecedor integer,
      tipo varchar(30),
      quantidade_adquirida integer,
-     data_aquisicao date,
      preco_aquisicao float,
+     data_aquisicao date,
      preco_venda float
     );
 
     CREATE TABLE CLIENTE (
      codigo integer,
      nome varchar(100),
-     sexo char,
      idade integer,
+     sexo char
     );
     
     CREATE TABLE COMPRA (
-     numero_nota integer PRIMARY KEY,
+     numero_nota integer,
      data_compra date,
      produto integer,
      qtd_venda integer,
