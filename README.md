@@ -163,12 +163,163 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
-        a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
-        b) formato .SQL
+        
+    INSERT INTO
+	       COMPRA
+    VALUES  (12, '2019-04-07', 001, 1, NULL, 1111),
+	           (12, '2019-04-07', 002, 1, NULL, 1111),
+	           (12, '2019-04-07', 003, 2, 0.2, 1111),
+	           (12, '2019-04-07', 005, 10, NULL, 1111),
+	           (16, '2019-04-08', 006, 2, NULL, 3333),
+	           (17, '2019-04-08', 008, 1, NULL, 2222),
+	           (18, '2019-04-10', 003, 1, NULL, 6666),
+	           (19, '2019-04-11', 007, 1, NULL, 4444),
+	           (20, '2019-04-11', 004, 1, NULL, 5555),
+	           (20, '2019-04-11', 009, 1, NULL, 5555);
+
+    INSERT INTO
+        PRODUTO
+    VALUES  (001, 'Tênis rosa', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
+	           (002, 'Tênis branco', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
+	           (003, 'Tênis preto', 44444444, 'tênis', 50, 50, '2019-03-11', 130),
+	           (004, 'Meia Puma', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
+	           (005, 'Sapatilha Preta', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
+	           (006, 'Bota feminina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
+	           (007, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
+	           (008, 'Sapatilha vermelha', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
+           	(009, 'Meia Adidas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
+	           (010, 'Alpargata', 88888888, 'alpargata', 40, 14, '2019-04-04', 130);
+
+    INSERT INTO
+	       FORNECEDOR
+    VALUES  (44444444, 'Converse', 'Tênis', '(44)4444-4444'),
+	           (22222222, 'Puma', 'Esportes', '(22)2222-2222'),
+	           (55555555, 'Moleca', 'Calçados Femininos', '(55)5555-5555'),	
+	           (33333333, 'Vizzano', 'Calçados Femininos', '(33)3333-3333'),
+	           (77777777, 'Luis Vuitton', 'Vestuário', '(77)7777-7777'),
+	           (66666666, 'Arezzo', 'Calçados Femininos', '(66)6666-6666'),
+	           (11111111, 'Adidas', 'Esportes', '(11)1111-1111'),
+	           (88888888, 'Marriano', 'Sapatos', '(88)8888-8888');
+
+    INSERT INTO
+	        CLIENTE
+    VALUES  (1111, 'Joana', 40, 'F'),
+           	(3333, 'Maria', 41, 'F'),
+	           (2222, 'Marcos', 38, 'M'),
+	           (6666, 'Amanda', 28, 'F'),
+	           (4444, 'Valéria', 35, 'F'),
+	           (5555, 'Jonas', 43, 'M');
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
-        a) Junção dos scripts anteriores em um único script 
-        (create para tabelas e estruturas de dados + dados a serem inseridos)
+
+/* Lógico_1: */
+
+    CREATE TABLE PRODUTO (
+     codigo integer PRIMARY KEY,
+     nome varchar(30),
+     valor float,
+     tipo varchar(30)
+    );
+
+    CREATE TABLE CLIENTE_compra (
+     codigo integer,
+     nome varchar(100),
+     sexo char,
+     idade integer,
+     numero_nota integer,
+     data date,
+     PRIMARY KEY (codigo, numero_nota)
+    );
+
+    CREATE TABLE Fornecedor (
+     codigo integer PRIMARY KEY,
+     nome varchar(30),
+     ramo varchar(30),
+     contato varchar(15)
+    );
+
+    CREATE TABLE Possui (
+     fk_CLIENTE_compra_codigo integer,
+     fk_CLIENTE_compra_numero_nota integer,
+     fk_PRODUTO_codigo integer,
+     qtd integer
+     );
+
+    CREATE TABLE Fornece (
+     fk_Fornecedor_codigo integer,
+     fk_PRODUTO_codigo integer,
+     data_aquisicao date,
+     preco_aquisicao float,
+     qtd_adquiria integer
+    );
+ 
+    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
+     FOREIGN KEY (fk_CLIENTE_compra_codigo, fk_CLIENTE_compra_numero_nota)
+     REFERENCES CLIENTE_compra (codigo, numero_nota)
+     ON DELETE RESTRICT;
+ 
+    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+     FOREIGN KEY (fk_PRODUTO_codigo)
+     REFERENCES PRODUTO (codigo)
+     ON DELETE RESTRICT;
+ 
+    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
+     FOREIGN KEY (fk_Fornecedor_codigo)
+     REFERENCES Fornecedor (codigo)
+     ON DELETE RESTRICT;
+ 
+    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
+     FOREIGN KEY (fk_PRODUTO_codigo)
+     REFERENCES PRODUTO (codigo)
+     ON DELETE RESTRICT;
+     
+     INSERT INTO
+	       COMPRA
+    VALUES  (12, '2019-04-07', 001, 1, NULL, 1111),
+	           (12, '2019-04-07', 002, 1, NULL, 1111),
+	           (12, '2019-04-07', 003, 2, 0.2, 1111),
+	           (12, '2019-04-07', 005, 10, NULL, 1111),
+	           (16, '2019-04-08', 006, 2, NULL, 3333),
+	           (17, '2019-04-08', 008, 1, NULL, 2222),
+	           (18, '2019-04-10', 003, 1, NULL, 6666),
+	           (19, '2019-04-11', 007, 1, NULL, 4444),
+	           (20, '2019-04-11', 004, 1, NULL, 5555),
+	           (20, '2019-04-11', 009, 1, NULL, 5555);
+
+    INSERT INTO
+        PRODUTO
+    VALUES  (001, 'Tênis rosa', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
+	           (002, 'Tênis branco', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
+	           (003, 'Tênis preto', 44444444, 'tênis', 50, 50, '2019-03-11', 130),
+	           (004, 'Meia Puma', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
+	           (005, 'Sapatilha Preta', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
+	           (006, 'Bota feminina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
+	           (007, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
+	           (008, 'Sapatilha vermelha', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
+           	(009, 'Meia Adidas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
+	           (010, 'Alpargata', 88888888, 'alpargata', 40, 14, '2019-04-04', 130);
+
+    INSERT INTO
+	       FORNECEDOR
+    VALUES  (44444444, 'Converse', 'Tênis', '(44)4444-4444'),
+	           (22222222, 'Puma', 'Esportes', '(22)2222-2222'),
+	           (55555555, 'Moleca', 'Calçados Femininos', '(55)5555-5555'),	
+	           (33333333, 'Vizzano', 'Calçados Femininos', '(33)3333-3333'),
+	           (77777777, 'Luis Vuitton', 'Vestuário', '(77)7777-7777'),
+	           (66666666, 'Arezzo', 'Calçados Femininos', '(66)6666-6666'),
+	           (11111111, 'Adidas', 'Esportes', '(11)1111-1111'),
+	           (88888888, 'Marriano', 'Sapatos', '(88)8888-8888');
+
+    INSERT INTO
+	        CLIENTE
+    VALUES  (1111, 'Joana', 40, 'F'),
+           	(3333, 'Maria', 41, 'F'),
+	           (2222, 'Marcos', 38, 'M'),
+	           (6666, 'Amanda', 28, 'F'),
+	           (4444, 'Valéria', 35, 'F'),
+	           (5555, 'Jonas', 43, 'M');
+        
+        
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
         c) formato .SQL
