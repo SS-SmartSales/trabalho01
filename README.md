@@ -62,24 +62,104 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     [Grupo02]: [Rodolfo Luiz de Oliveira e Gustavo Olmo Santana]
 
 #### 5.2 DESCRIÇÃO DOS DADOS 
-    [objeto]: [descrição do objeto]
     
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
-
-## Marco de Entrega 06 em: (22/05/2019)<br>
+    Tabela Produto
+    CODIGO: Campo que armazena os códigos de cada produto.
+    PRODUTO: Campo que armazena os nomes de cada produto .
+    FORNECEDOR: Campo que armazena o código dos fornecedores de cada produto.
+    DATA_AQUISICAO: Campo que armazena as datas de compra dos produtos.
+    QTD_ADQUIRIDA: Campo que armazena as quantidades de produto comprados de um fornecedor.
+    PRECO_AQUISICAO: Campo que armazena os preços de compra de cada produto.
+    PRECO_VENDA: Campo que armazena os preços de venda de cada produto.
+    
+    Tabela Vendas
+    NUMERO_NOTA: Campo que armazena o código de identificação da nota fiscal emitida ao final da venda de produtos.
+    QUANTIDADE_VENDIDA: Campo que armazena a quantidade de vendida de cada produto.
+    DESCONTO: Campo que armazena os descontos que cada produto tem.
+    CODIGO: Campo que armazena o código do produto vendido.
+    CLIENTE: Campo que armazena o código do cliente para o qual o produto foi vendido.
+    
+    Tabela Fornecedores
+    CODIGO: Campo que armazena o Cadastro Nacional da Pessoa Jurídica de cada fornecedor.
+    NOME: Campo que armazena o nome de cada empresa fornecedora.
+    RAMO: Campo que armazena o tipo de mercadoria que a empresa produz.
+    CONTATO: Campo que armazena o contato do fornecedor.
+    
+    Tabela Clientes
+    CODIGO: Campo que armazena o código do cliente.
+    NOME: Campo que armazena o nome do cliente cadastrado.
+    IDADE: Campo que armazena a idade do cliente.
+    SEXO: Campo que armazena o sexo do cliente.
 
 ### 6	MODELO LÓGICO<br>
-        a) inclusão do modelo lógico do banco de dados
-        b) verificação de correspondencia com o modelo conceitual 
-        (não serão aceitos modelos que não estejam em conformidade)
+
+> Aqui consta o modelo lógico do trabalho realizado pelo grupo.
+    
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/modelo%20logico.jpg?raw=true "Modelo Conceitual")
 
 ### 7	MODELO FÍSICO<br>
-        a) inclusão das instruções de criacão das estruturas DDL 
-        (criação de tabelas, alterações, etc..)          
 
-## Marco de Entrega 07 em: (27/05/2019)<br>
+    /* Lógico_1: */
+
+    CREATE TABLE PRODUTO (
+     codigo integer PRIMARY KEY,
+     nome varchar(30),
+     valor float,
+     tipo varchar(30)
+    );
+
+    CREATE TABLE CLIENTE_compra (
+     codigo integer,
+     nome varchar(100),
+     sexo char,
+     idade integer,
+     numero_nota integer,
+     data date,
+     PRIMARY KEY (codigo, numero_nota)
+    );
+
+    CREATE TABLE Fornecedor (
+     codigo integer PRIMARY KEY,
+     nome varchar(30),
+     ramo varchar(30),
+     contato varchar(15)
+    );
+
+    CREATE TABLE Possui (
+     fk_CLIENTE_compra_codigo integer,
+     fk_CLIENTE_compra_numero_nota integer,
+     fk_PRODUTO_codigo integer,
+     qtd integer
+     );
+
+    CREATE TABLE Fornece (
+     fk_Fornecedor_codigo integer,
+     fk_PRODUTO_codigo integer,
+     data_aquisicao date,
+     preco_aquisicao float,
+     qtd_adquiria integer
+    );
+ 
+    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
+     FOREIGN KEY (fk_CLIENTE_compra_codigo, fk_CLIENTE_compra_numero_nota)
+     REFERENCES CLIENTE_compra (codigo, numero_nota)
+     ON DELETE RESTRICT;
+ 
+    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+     FOREIGN KEY (fk_PRODUTO_codigo)
+     REFERENCES PRODUTO (codigo)
+     ON DELETE RESTRICT;
+ 
+    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
+     FOREIGN KEY (fk_Fornecedor_codigo)
+     REFERENCES Fornecedor (codigo)
+     ON DELETE RESTRICT;
+ 
+    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
+     FOREIGN KEY (fk_PRODUTO_codigo)
+     REFERENCES PRODUTO (codigo)
+     ON DELETE RESTRICT;
+
 
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
