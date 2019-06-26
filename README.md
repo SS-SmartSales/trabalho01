@@ -104,18 +104,28 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     CREATE TABLE PRODUTO (
      codigo integer PRIMARY KEY,
      nome varchar(30),
-     valor float,
-     tipo varchar(30)
+     fornecedor integer,
+     tipo varchar(30),
+     quantidade_adquirida integer,
+     data_aquisicao date,
+     preco_aquisicao float,
+     preco_venda float
     );
 
-    CREATE TABLE CLIENTE_compra (
+    CREATE TABLE CLIENTE (
      codigo integer,
      nome varchar(100),
      sexo char,
      idade integer,
-     numero_nota integer,
-     data date,
-     PRIMARY KEY (codigo, numero_nota)
+    );
+    
+    CREATE TABLE COMPRA (
+     numero_nota integer PRIMARY KEY,
+     data_compra date,
+     produto integer,
+     qtd_venda integer,
+     desconto float,
+     cliente integer
     );
 
     CREATE TABLE Fornecedor (
@@ -124,42 +134,6 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
      ramo varchar(30),
      contato varchar(15)
     );
-
-    CREATE TABLE Possui (
-     fk_CLIENTE_compra_codigo integer,
-     fk_CLIENTE_compra_numero_nota integer,
-     fk_PRODUTO_codigo integer,
-     qtd integer
-     );
-
-    CREATE TABLE Fornece (
-     fk_Fornecedor_codigo integer,
-     fk_PRODUTO_codigo integer,
-     data_aquisicao date,
-     preco_aquisicao float,
-     qtd_adquiria integer
-    );
- 
-    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
-     FOREIGN KEY (fk_CLIENTE_compra_codigo, fk_CLIENTE_compra_numero_nota)
-     REFERENCES CLIENTE_compra (codigo, numero_nota)
-     ON DELETE RESTRICT;
- 
-    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
-     FOREIGN KEY (fk_PRODUTO_codigo)
-     REFERENCES PRODUTO (codigo)
-     ON DELETE RESTRICT;
- 
-    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
-     FOREIGN KEY (fk_Fornecedor_codigo)
-     REFERENCES Fornecedor (codigo)
-     ON DELETE RESTRICT;
- 
-    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
-     FOREIGN KEY (fk_PRODUTO_codigo)
-     REFERENCES PRODUTO (codigo)
-     ON DELETE RESTRICT;
-
 
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
@@ -212,23 +186,33 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
 
-/* Lógico_1: */
+    /* Lógico_1: */
 
     CREATE TABLE PRODUTO (
      codigo integer PRIMARY KEY,
      nome varchar(30),
-     valor float,
-     tipo varchar(30)
+     fornecedor integer,
+     tipo varchar(30),
+     quantidade_adquirida integer,
+     data_aquisicao date,
+     preco_aquisicao float,
+     preco_venda float
     );
 
-    CREATE TABLE CLIENTE_compra (
+    CREATE TABLE CLIENTE (
      codigo integer,
      nome varchar(100),
      sexo char,
      idade integer,
-     numero_nota integer,
-     data date,
-     PRIMARY KEY (codigo, numero_nota)
+    );
+    
+    CREATE TABLE COMPRA (
+     numero_nota integer PRIMARY KEY,
+     data_compra date,
+     produto integer,
+     qtd_venda integer,
+     desconto float,
+     cliente integer
     );
 
     CREATE TABLE Fornecedor (
@@ -237,41 +221,6 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
      ramo varchar(30),
      contato varchar(15)
     );
-
-    CREATE TABLE Possui (
-     fk_CLIENTE_compra_codigo integer,
-     fk_CLIENTE_compra_numero_nota integer,
-     fk_PRODUTO_codigo integer,
-     qtd integer
-     );
-
-    CREATE TABLE Fornece (
-     fk_Fornecedor_codigo integer,
-     fk_PRODUTO_codigo integer,
-     data_aquisicao date,
-     preco_aquisicao float,
-     qtd_adquiria integer
-    );
- 
-    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
-     FOREIGN KEY (fk_CLIENTE_compra_codigo, fk_CLIENTE_compra_numero_nota)
-     REFERENCES CLIENTE_compra (codigo, numero_nota)
-     ON DELETE RESTRICT;
- 
-    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
-     FOREIGN KEY (fk_PRODUTO_codigo)
-     REFERENCES PRODUTO (codigo)
-     ON DELETE RESTRICT;
- 
-    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
-     FOREIGN KEY (fk_Fornecedor_codigo)
-     REFERENCES Fornecedor (codigo)
-     ON DELETE RESTRICT;
- 
-    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
-     FOREIGN KEY (fk_PRODUTO_codigo)
-     REFERENCES PRODUTO (codigo)
-     ON DELETE RESTRICT;
      
      INSERT INTO
 	       COMPRA
