@@ -95,7 +95,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 > Aqui consta o modelo lógico do trabalho realizado pelo grupo.
     
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/modelo%20logico.jpg?raw=true "Modelo Conceitual")
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/modelo%20logico.png?raw=true "Modelo Conceitual")
 
 ### 7	MODELO FÍSICO<br>
 
