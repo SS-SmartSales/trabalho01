@@ -46,7 +46,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
     PRODUTOS: tabela que contém as informações de todos os produtos comercializados pela empresa.
     FORNECEDORES: tabela que contém as informações de todos os fornecedores da loja.
-    VENDAS: tabela que contém as informações de todas as vendas em um certo período. É importante para calcular o lucro e o número de produtos vendidos.
+    COMPRA: tabela que contém as informações de todas as vendas em um certo período. É importante para calcular o lucro e o número de produtos vendidos.
     CLIENTE: tabela que contém as informações de todos os clientes da loja, cadastrados ao realizar a primeira compra na loja.
     
 ![Exemplo de Tabela de dados da SmartSales](https://github.com/SS-SmartSales/trabalho01/blob/master/nova%20PlanilhaSmartsSales%20%20em%20ods.ods?raw=true "Tabela - SmartSales")
