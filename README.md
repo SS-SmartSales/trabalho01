@@ -102,39 +102,81 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     /* Lógico_1: */
 
     CREATE TABLE PRODUTO (
-     codigo integer,
-     nome varchar(30),
-     fornecedor integer,
-     tipo varchar(30),
-     quantidade_adquirida integer,
-     preco_aquisicao float,
-     data_aquisicao date,
-     preco_venda float
+    	codigo integer PRIMARY KEY,
+   	nome varchar(30),
+  	preco_aquisicao float,
+  	tipo varchar(30),
+  	data_aquisicao date,
+ 	qtd_adquirirda integer,
+  	preco_venda floa
     );
 
     CREATE TABLE CLIENTE (
-     codigo integer,
-     nome varchar(100),
-     idade integer,
-     sexo char
+   	 codigo integer PRIMARY KEY,
+  	 nome varchar(100),
+  	 sexo char,
+         idade integer
     );
-    
+
     CREATE TABLE COMPRA (
-     numero_nota integer PRIMARY KEY,
-     data_compra date,
-     produto integer,
-     qtd_venda integer,
-     desconto float,
-     cliente integer
+    	numero_nota integer PRIMARY KEY,
+    	data_compra date,
+    	qtd_venda integer,
+    	desconto float
     );
 
     CREATE TABLE Fornecedor (
-     codigo integer PRIMARY KEY,
-     nome varchar(30),
-     ramo varchar(30),
-     contato varchar(15)
+    	codigo integer PRIMARY KEY,
+    	nome varchar(30),
+    	ramo varchar(30),
+    	contato varchar(15)
     );
 
+    CREATE TABLE realiza (
+    	fk_CLIENTE_codigo integer,
+    	fk_COMPRA_numero_nota integer
+    );
+
+    CREATE TABLE Possui (
+    	fk_COMPRA_numero_nota integer,
+    	fk_PRODUTO_codigo integer
+    );
+
+    CREATE TABLE Fornece (
+    	fk_Fornecedor_codigo integer,
+    	fk_PRODUTO_codigo integer
+    );
+ 
+    ALTER TABLE realiza ADD CONSTRAINT FK_realiza_1
+    	FOREIGN KEY (fk_CLIENTE_codigo)
+    	REFERENCES CLIENTE (codigo)
+    	ON DELETE RESTRICT;
+ 
+    ALTER TABLE realiza ADD CONSTRAINT FK_realiza_2
+    	FOREIGN KEY (fk_COMPRA_numero_nota)
+    	REFERENCES COMPRA (numero_nota)
+    	ON DELETE RESTRICT;
+ 
+    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
+    	FOREIGN KEY (fk_COMPRA_numero_nota)
+    	REFERENCES COMPRA (numero_nota)
+    	ON DELETE RESTRICT;
+ 
+    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+    	FOREIGN KEY (fk_PRODUTO_codigo)
+    	REFERENCES PRODUTO (codigo)
+    	ON DELETE RESTRICT;
+ 
+    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
+    	FOREIGN KEY (fk_Fornecedor_codigo)
+    	REFERENCES Fornecedor (codigo)
+    	ON DELETE RESTRICT;
+ 
+    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
+    	FOREIGN KEY (fk_PRODUTO_codigo)
+    	REFERENCES PRODUTO (codigo)
+    	ON DELETE RESTRICT;
+    
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
         
     INSERT INTO
