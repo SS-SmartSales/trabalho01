@@ -136,7 +136,6 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     );
 
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-#### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         
     INSERT INTO
 	       COMPRA
@@ -183,8 +182,6 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	           (6666, 'Amanda', 28, 'F'),
 	           (4444, 'Valéria', 35, 'F'),
 	           (5555, 'Jonas', 43, 'M');
-
-#### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
 
     /* Lógico_1: */
 
@@ -269,15 +266,6 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	           (5555, 'Jonas', 43, 'M');
         
         
-        b) Criar um novo banco de dados para testar a restauracao 
-        (em caso de falha na restauração o grupo não pontuará neste quesito)
-        c) formato .SQL
-#### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
-        a) Junção dos scripts anteriores em um único script 
-        (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
-        b) Criar um novo banco de dados para testar a restauracao 
-        (em caso de falha na restauração o grupo não pontuará neste quesito)
-        c) formato .SQL
 
 ## Marco de Entrega 08 em: (29/05/2019)<br>
 
