@@ -74,10 +74,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     
     Tabela Vendas
     NUMERO_NOTA: Campo que armazena o código de identificação da nota fiscal emitida ao final da venda de produtos.
-    QUANTIDADE_VENDIDA: Campo que armazena a quantidade de vendida de cada produto.
-    DESCONTO: Campo que armazena os descontos que cada produto tem.
     CODIGO: Campo que armazena o código do produto vendido.
-    CLIENTE: Campo que armazena o código do cliente para o qual o produto foi vendido.
+    DATA_COMPRA: Campo que armazena a data de venda do produto.
     
     Tabela Fornecedores
     CODIGO: Campo que armazena o Cadastro Nacional da Pessoa Jurídica de cada fornecedor.
@@ -90,6 +88,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     NOME: Campo que armazena o nome do cliente cadastrado.
     IDADE: Campo que armazena a idade do cliente.
     SEXO: Campo que armazena o sexo do cliente.
+    LATITUDE: Campo que armazena a latitude do cliente.
+    LONGITUDE: Campo que armazena a longitude do cliente.
 
 ### 6	MODELO LÓGICO<br>
 
