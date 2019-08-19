@@ -316,6 +316,161 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
+/* Lógico_1: */
+
+    CREATE TABLE PRODUTO (
+     codigo integer PRIMARY KEY,
+     nome varchar(30),
+     fornecedor integer,
+     tipo varchar(30),
+     quantidade_adquirida integer,
+     preco_aquisicao float,
+     data_aquisicao date,
+     preco_venda float
+    );
+
+    CREATE TABLE CLIENTE (
+     codigo integer,
+     nome varchar(100),
+     idade integer,
+     sexo char
+    );
+    
+    CREATE TABLE COMPRA (
+     numero_nota integer,
+     data_compra date,
+     produto integer,
+     qtd_venda integer,
+     desconto float,
+     cliente integer
+    );
+
+    CREATE TABLE Fornecedor (
+     codigo integer PRIMARY KEY,
+     nome varchar(30),
+     ramo varchar(30),
+     contato varchar(15)
+    );
+     
+     INSERT INTO
+	       COMPRA
+    VALUES  (12, '2019-04-07', 001, 1, 0, 1111),
+	           (12, '2019-04-07', 002, 1, 0, 1111),
+	           (12, '2019-04-07', 003, 2, 0.2, 1111),
+	           (12, '2019-04-07', 005, 10, 0, 1111),
+	           (16, '2019-04-08', 006, 2, 0, 3333),
+	           (17, '2019-04-08', 008, 1, 0, 2222),
+	           (18, '2019-04-10', 003, 1, 0, 6666),
+	           (19, '2019-04-11', 007, 1, 0, 4444),
+	           (20, '2019-04-11', 004, 1, 0, 5555),
+	           (20, '2019-04-11', 009, 1, 0, 5555);
+
+    INSERT INTO
+        PRODUTO
+    VALUES  (001, 'Tênis rosa', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
+	           (002, 'Tênis branco', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
+	           (003, 'Tênis preto', 44444444, 'tênis', 50, 50, '2019-03-11', 130),
+	           (004, 'Meia Puma', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
+	           (005, 'Sapatilha Preta', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
+	           (006, 'Bota feminina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
+	           (007, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
+	           (008, 'Sapatilha vermelha', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
+           	(009, 'Meia Adidas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
+	           (010, 'Alpargata', 88888888, 'alpargata', 40, 14, '2019-04-04', 130);
+
+    INSERT INTO
+	       FORNECEDOR
+    VALUES  (44444444, 'Converse', 'Tênis', '(44)4444-4444'),
+	           (22222222, 'Puma', 'Esportes', '(22)2222-2222'),
+	           (55555555, 'Moleca', 'Calçados Femininos', '(55)5555-5555'),	
+	           (33333333, 'Vizzano', 'Calçados Femininos', '(33)3333-3333'),
+	           (77777777, 'Luis Vuitton', 'Vestuário', '(77)7777-7777'),
+	           (66666666, 'Arezzo', 'Calçados Femininos', '(66)6666-6666'),
+	           (11111111, 'Adidas', 'Esportes', '(11)1111-1111'),
+	           (88888888, 'Marriano', 'Sapatos', '(88)8888-8888');
+
+    INSERT INTO
+	        CLIENTE
+    VALUES  (1111, 'Joana', 40, 'F'),
+           	(3333, 'Maria', 41, 'F'),
+	           (2222, 'Marcos', 38, 'M'),
+	           (6666, 'Amanda', 28, 'F'),
+	           (4444, 'Valéria', 35, 'F'),
+	           (5555, 'Jonas', 43, 'M');
+    INSERT INTO
+       COMPRA
+     VALUES  (13, '2019-04-12', 001, 3, 0, 7777),
+           (13, '2019-04-12', 002, 4, 0, 7777),
+           (13, '2019-04-12', 003, 5, 0.2, 9999),
+           (13, '2019-04-13', 005, 11, 0, 1010),
+           (21, '2019-04-14', 006, 2, 0, 8888),
+           (22, '2019-04-15', 008, 6, 0, 1111),
+           (24, '2019-04-15', 003, 7, 0, 2222),
+           (22, '2019-04-15', 007, 7, 0, 2020),
+           (30, '2019-04-16', 004, 8, 0, 3333),
+           (30, '2019-04-16', 009, 1, 0, 6666);
+
+    INSERT INTO
+     PRODUTO
+    VALUES     (031, 'Tênis Preto', 44444444, 'tênis', 30, 50, '2019-03-11', 40),
+            (011, 'Tênis Preto', 44444444, 'tênis', 30, 50, '2019-03-11', 40),
+           (012, 'Tênis azul', 44444444, 'tênis', 30, 50, '2019-03-11', 30),
+           (013, 'Tênis verde', 44444444, 'tênis', 50, 50, '2019-03-11', 30),
+           (014, 'Meia Puma', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
+           (015, 'Sapatilha Preta', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
+           (016, 'Bota feminina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
+           (017, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
+           (018, 'Sapatilha rosa', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
+       	   (019, 'Meia Velhas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
+           (020, 'Bota Country', 88888888, 'bota', 40, 14, '2019-04-04', 130),
+           (021, 'Tênis amarelo', 44444444, 'tênis', 30, 50, '2019-03-11', 40),
+           (022, 'Tênis coral', 44444444, 'tênis', 30, 50, '2019-03-11', 30),
+           (023, 'Tênis esmeralda', 44444444, 'tênis', 50, 50, '2019-03-11', 30),
+           (024, 'Meia branca', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
+           (025, 'Sapatilha Neon', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
+           (026, 'Bota masculina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
+           (027, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
+           (028, 'Sapatilha roxo', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
+       	   (029, 'Meia Vermelhas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
+           (030, 'Cadarço Branco', 88888888, 'Cadarço', 40, 14, '2019-04-04', 130);
+
+    INSERT INTO
+        FORNECEDOR
+    VALUES  (10000000, 'DustB', 'Tênis', '(12)4444-4444'),
+           (20000000, 'Polar', 'Esportes', '(11)2222-2222'),
+           (30000000, 'LilicaRepilica', 'Calçados Infantis', '(13)5555-5555'),	
+           (40000000, 'Parafeno', 'Calçados Femininos', '(33)3333-3333'),
+           (50000000, 'Garnnier', 'Vestuário', '(71)7777-7777'),
+           (60000000, 'Vizano', 'Calçados Femininos', '(66)6666-6666'),
+           (70000000, 'Adidas', 'Esportes', '(18)1111-1111'),
+           (80000000, 'Marriano', 'Sapatos', '(98)8888-8888'),
+           (90000000, 'DustB', 'Tênis', '(12)4444-4444'),
+           (11000000, 'Polar', 'Esportes', '(11)2222-2222'),
+           (11200000, 'LilicaRepilica', 'Calçados Femininos', '(13)5555-5555'),	
+           (11300000, 'Parafeno', 'Calçados Femininos', '(33)3333-3333'),
+           (11400000, 'Garnnier', 'Vestuário', '(71)7777-7777'),
+           (11500000, 'Vizano', 'Calçados Femininos', '(66)6666-6666'),
+           (11600000, 'Apollo', 'Esportes', '(18)1111-1111');
+
+     INSERT INTO
+         CLIENTE
+    VALUES  (1212, 'Valentina', 30, 'F'),
+       	(7777, 'Mariana', 31, 'F'),
+           (1010, 'Guilherme', 28, 'M'),
+           (8888, 'Aurora', 21, 'F'),
+           (9999, 'Vitória', 15, 'F'),
+           (1414, 'Gustavo', 30, 'M'),
+       	   (1313, 'Rodolfo', 31, 'M'),
+           (1010, 'Arthur', 28, 'M'),
+           (8888, 'Selena', 21, 'F'),
+           (9999, 'Vírginia', 15, 'F'),
+           (2020, 'João', 33, 'M');
+
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Produto.png)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Fornecedor.png)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Compra.png)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Cliente.png)
+
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
