@@ -54,7 +54,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 > O modelo conceitual apresenta as entidades existentes no programa e os relacionamentos que elas possuem entre si.
     
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/ModeloConceitual.png)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/ModeloConceitual12.png)
     
 #### 5.1 Validação do Modelo Conceitual
     [Grupo01]: [Lucas Tejada Fabres e Caio Simão Lessa]
