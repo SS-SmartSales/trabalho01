@@ -95,7 +95,6 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 > Aqui consta o modelo lógico do trabalho realizado pelo grupo.
     
-![Alt text]()
 
 ### 7	MODELO FÍSICO<br>
 
