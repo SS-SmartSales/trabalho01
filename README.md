@@ -25,28 +25,33 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 #### 4.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
  
-> Para que o programa seja iniciado, ele precisa dos seguintes relatórios:
-* Informações dos fornecedores com código, nome, ramo e contato.
-* Informação do produto com código, nome, fornecedor, data de compra, quantidade comprada, preço de compra, preço de venda. Caso seja a primeira vez que o produto seja comprado, ele será inserido à tabela dos produtos. Caso não, a quantidade será somada a já existente.
-* Informação dos clientes, que serão cadastrados ao fazerem sua primeira compra, com código, nome, idade e sexo.
-> Para que funcione, precisa dos seguintes relatórios:
-* Venda (funciona como uma nota fiscal) contendo o número da nota, o código do produto, a quantidade vendida, o desconto, se houver e o cliente para o qual o produto foi vendido.
-> Com esses relatórios, o sistema consegue responder às seguintes questões:
-* Quantos e quais produtos estão em estoque e foram vendidos;
-* Qual o produto menos e mais vendido;
-* Quanto foi a despesa e o lucro com os produtos;
-* Qual o público do alvo dos produtos;
-* Em quando tempo o dono da empresa precisa repor os produtos no estoque.
+*Qual o fornecedor com os produtos com o melhor preço?
+
+*Quantos produtos tem em estoque?
+
+*Qual o produto menos e mais vendidos?
+
+*Quanto foi a despesa e lucro sobre os produtos?
+
+*Qual o público-alvo dos produtos?
  
 
 #### 4.2 TABELA DE DADOS DO SISTEMA:
 
 >A tabela aqui anexada contém os atributos do sistema SmartSales. Ela simula um relatório com todos os dados que serão armazenados.
 
-    PRODUTOS: tabela que contém as informações de todos os produtos comercializados pela empresa.
-    FORNECEDORES: tabela que contém as informações de todos os fornecedores da loja.
-    COMPRA: tabela que contém as informações de todas as vendas em um certo período. É importante para calcular o lucro e o número de produtos vendidos.
-    CLIENTE: tabela que contém as informações de todos os clientes da loja, cadastrados ao realizar a primeira compra na loja.
+    CLIENTE: Contém as informações dos clientes da empresa.
+    COMPRA: Identifica e data uma a compra.
+    ITENS: Lista e quantifica os itens vendidos.
+    PRODUTO: Codifica, nomeia e estabelece o preço de venda.
+    CATEGORIA: Categoriza os produtos.
+    PRODUTO_AQUSICAO: Quantifica os produtos comprados.
+    AQUISICAO: Controla a entrada dos produtos e caracteriza preço de aquisição.
+    FORNECEDO: Identifica o fornecedor com nome e código.
+    RAMO: Determina o ramo do fornecedor.
+    CONTATO: Armazena e codifica o contato do fornecedor.
+    TIPO: Categoriza o tipo de contato do fornecedor.
+    
     
 ![Exemplo de Tabela de dados da SmartSales](https://github.com/SS-SmartSales/trabalho01/blob/master/nova%20PlanilhaSmartsSales%20%20em%20ods.ods?raw=true "Tabela - SmartSales")
 
