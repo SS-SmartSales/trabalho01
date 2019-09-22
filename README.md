@@ -155,218 +155,603 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 ### 7	MODELO FÍSICO<br>
 
-    /* Lógico_1: */
+	   CREATE TABLE CLIENTE (
+	    nome varchar(50),
+	    sexo char,
+	    data_nascimento Date,
+	    latitude float,
+	    longitude float,
+	    codigo integer PRIMARY KEY
+	);
 
-    CREATE TABLE PRODUTO (
-    	codigo integer PRIMARY KEY,
-   	nome varchar(30),
-  	preco_aquisicao float,
-  	tipo varchar(30),
-  	data_aquisicao date,
- 	qtd_adquirirda integer,
-  	preco_venda floa
-    );
+	CREATE TABLE PRODUTO (
+	    codigo_produto integer PRIMARY KEY,
+	    nome varchar(50),
+	    preco_venda float,
+	    FK_CATEGORIA_cod_categoria integer
+	);
 
-    CREATE TABLE CLIENTE (
-   	 codigo integer PRIMARY KEY,
-  	 nome varchar(100),
-  	 sexo char,
-         idade integer
-    );
+	CREATE TABLE FORNECEDO (
+	    nome varchar(50),
+	    codigo integer PRIMARY KEY
+	);
 
-    CREATE TABLE COMPRA (
-    	numero_nota integer PRIMARY KEY,
-    	data_compra date,
-    	qtd_venda integer,
-    	desconto float
-    );
+	CREATE TABLE CONTATO (
+	    codigo_contato integer PRIMARY KEY,
+	    contato varchar(30),
+	    FK_FORNECEDO_codigo integer,
+	    FK_TIPO_cod_tipo integer
+	);
 
-    CREATE TABLE Fornecedor (
-    	codigo integer PRIMARY KEY,
-    	nome varchar(30),
-    	ramo varchar(30),
-    	contato varchar(15)
-    );
+	CREATE TABLE CATEGORIA (
+	    cod_categoria integer PRIMARY KEY,
+	    tipo varchar(30)
+	);
 
-    CREATE TABLE realiza (
-    	fk_CLIENTE_codigo integer,
-    	fk_COMPRA_numero_nota integer
-    );
+	CREATE TABLE COMPRA (
+	    cod_compra integer PRIMARY KEY,
+	    data Date,
+	    FK_CLIENTE_codigo integer
+	);
 
-    CREATE TABLE Possui (
-    	fk_COMPRA_numero_nota integer,
-    	fk_PRODUTO_codigo integer
-    );
+	CREATE TABLE TIPO (
+	    tipo varchar(30),
+	    cod_tipo integer PRIMARY KEY
+	);
 
-    CREATE TABLE Fornece (
-    	fk_Fornecedor_codigo integer,
-    	fk_PRODUTO_codigo integer
-    );
- 
-    ALTER TABLE realiza ADD CONSTRAINT FK_realiza_1
-    	FOREIGN KEY (fk_CLIENTE_codigo)
-    	REFERENCES CLIENTE (codigo)
-    	ON DELETE RESTRICT;
- 
-    ALTER TABLE realiza ADD CONSTRAINT FK_realiza_2
-    	FOREIGN KEY (fk_COMPRA_numero_nota)
-    	REFERENCES COMPRA (numero_nota)
-    	ON DELETE RESTRICT;
- 
-    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
-    	FOREIGN KEY (fk_COMPRA_numero_nota)
-    	REFERENCES COMPRA (numero_nota)
-    	ON DELETE RESTRICT;
- 
-    ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
-    	FOREIGN KEY (fk_PRODUTO_codigo)
-    	REFERENCES PRODUTO (codigo)
-    	ON DELETE RESTRICT;
- 
-    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_1
-    	FOREIGN KEY (fk_Fornecedor_codigo)
-    	REFERENCES Fornecedor (codigo)
-    	ON DELETE RESTRICT;
- 
-    ALTER TABLE Fornece ADD CONSTRAINT FK_Fornece_2
-    	FOREIGN KEY (fk_PRODUTO_codigo)
-    	REFERENCES PRODUTO (codigo)
-    	ON DELETE RESTRICT;
-    
+	CREATE TABLE RAMO (
+	    cod_ramo integer PRIMARY KEY,
+	    ramo varchar(30)
+	);
+
+	CREATE TABLE AQUISICAO (
+	    preco_aquisicao float,
+	    codigo integer PRIMARY KEY,
+	    data Date,
+	    FK_FORNECEDO_codigo integer
+	);
+
+	CREATE TABLE Itens (
+	    fk_PRODUTO_codigo_produto integer,
+	    fk_COMPRA_cod_compra integer,
+	    qtd_venda integer,
+	    cod_itens varchar(100) PRIMARY KEY
+	);
+
+	CREATE TABLE Pertence (
+	    fk_FORNECEDO_codigo integer,
+	    fk_RAMO_cod_ramo integer
+	);
+
+	CREATE TABLE Produto_Aqusicao (
+	    fk_PRODUTO_codigo_produto integer,
+	    fk_AQUISICAO_codigo integer,
+	    qtd_aquisicao integer,
+	    cod varchar(100) PRIMARY KEY
+	);
+
+	ALTER TABLE PRODUTO ADD CONSTRAINT FK_PRODUTO_2
+	    FOREIGN KEY (FK_CATEGORIA_cod_categoria)
+	    REFERENCES CATEGORIA (cod_categoria)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_2
+	    FOREIGN KEY (FK_FORNECEDO_codigo)
+	    REFERENCES FORNECEDO (codigo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_3
+	    FOREIGN KEY (FK_TIPO_cod_tipo)
+	    REFERENCES TIPO (cod_tipo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE COMPRA ADD CONSTRAINT FK_COMPRA_2
+	    FOREIGN KEY (FK_CLIENTE_codigo)
+	    REFERENCES CLIENTE (codigo)
+	    ON DELETE CASCADE;
+
+	ALTER TABLE AQUISICAO ADD CONSTRAINT FK_AQUISICAO_2
+	    FOREIGN KEY (FK_FORNECEDO_codigo)
+	    REFERENCES FORNECEDO (codigo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Itens ADD CONSTRAINT FK_Itens_2
+	    FOREIGN KEY (fk_PRODUTO_codigo_produto)
+	    REFERENCES PRODUTO (codigo_produto)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Itens ADD CONSTRAINT FK_Itens_3
+	    FOREIGN KEY (fk_COMPRA_cod_compra)
+	    REFERENCES COMPRA (cod_compra)
+	    ON DELETE SET NULL;
+
+	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_1
+	    FOREIGN KEY (fk_FORNECEDO_codigo)
+	    REFERENCES FORNECEDO (codigo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_2
+	    FOREIGN KEY (fk_RAMO_cod_ramo)
+	    REFERENCES RAMO (cod_ramo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_2
+	    FOREIGN KEY (fk_PRODUTO_codigo_produto)
+	    REFERENCES PRODUTO (codigo_produto)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_3
+	    FOREIGN KEY (fk_AQUISICAO_codigo)
+	    REFERENCES AQUISICAO (codigo)
+	    ON DELETE RESTRICT; 
+	    
+	    
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
         
-    INSERT INTO
-	       COMPRA
-    VALUES  (12, '2019-04-07', 001, 1, 0.0, 1111),
-	           (12, '2019-04-07', 002, 1, 0.0, 1111),
-	           (12, '2019-04-07', 003, 2, 0.2, 1111),
-	           (12, '2019-04-07', 005, 10, 0.0, 1111),
-	           (16, '2019-04-08', 006, 2, 0.0, 3333),
-	           (17, '2019-04-08', 008, 1, 0.0, 2222),
-	           (18, '2019-04-10', 003, 1, 0.0, 6666),
-	           (19, '2019-04-11', 007, 1, 0.0, 4444),
-	           (20, '2019-04-11', 004, 1, 0.0, 5555),
-	           (20, '2019-04-11', 009, 1, 0.0, 5555);
+	    INSERT INTO
+		CLIENTE VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
+	('Gabriel','M','1982-11-08',40.7123528,-74.0159731,2),
+	('Pedro','M','1981-06-08',40.7142528,-74.0039731,3),
+	('Mariana','F','1970-05-09',40.7134548,-74.1159731,4),
+	('Flávia','F','1990-04-09',40.7143524,-74.0099731,5),
+	('Lucas','M','1985-02-09',40.7143520,-74.0088731,6),
+	('Maria','F','1995-01-09',40.7143533,-74.0057731,7);
 
-    INSERT INTO
-        PRODUTO
-    VALUES  (001, 'Tênis rosa', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
-	           (002, 'Tênis branco', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
-	           (003, 'Tênis preto', 44444444, 'tênis', 50, 50, '2019-03-11', 130),
-	           (004, 'Meia Puma', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
-	           (005, 'Sapatilha Preta', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
-	           (006, 'Bota feminina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
-	           (007, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
-	           (008, 'Sapatilha vermelha', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
-           	(009, 'Meia Adidas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
-	           (010, 'Alpargata', 88888888, 'alpargata', 40, 14, '2019-04-04', 130);
 
-    INSERT INTO
-	       FORNECEDOR
-    VALUES  (44444444, 'Converse', 'Tênis', '(44)4444-4444'),
-	           (22222222, 'Puma', 'Esportes', '(22)2222-2222'),
-	           (55555555, 'Moleca', 'Calçados Femininos', '(55)5555-5555'),	
-	           (33333333, 'Vizzano', 'Calçados Femininos', '(33)3333-3333'),
-	           (77777777, 'Luis Vuitton', 'Vestuário', '(77)7777-7777'),
-	           (66666666, 'Arezzo', 'Calçados Femininos', '(66)6666-6666'),
-	           (11111111, 'Adidas', 'Esportes', '(11)1111-1111'),
-	           (88888888, 'Marriano', 'Sapatos', '(88)8888-8888');
 
-    INSERT INTO
-	        CLIENTE
-    VALUES  (1111, 'Joana', 40, 'F'),
-           	(3333, 'Maria', 41, 'F'),
-	           (2222, 'Marcos', 38, 'M'),
-	           (6666, 'Amanda', 28, 'F'),
-	           (4444, 'Valéria', 35, 'F'),
-	           (5555, 'Jonas', 43, 'M');
+	INSERT INTO
+		COMPRA
+	VALUES (10,'2019-03-01',1),
+	(20,'2019-04-02',2),
+	(30,'2019-05-04',3),
+	(40,'2019-08-05',4),
+	(50,'2019-09-06',5),
+	(60,'2019-06-08',6),
+	(70,'2019-03-11',7);
 
+
+
+
+	INSERT INTO
+		CATEGORIA
+	VALUES(11,'salto alto'),
+	(22,'tênis'),
+	(33,'meia'),
+	(44,'sapatênis'),
+	(55,'sapatilha'),
+	(66,'sapato'),
+	(77,'alpargata'),
+	(88,'bota'),
+	(99,'sandália');
+
+
+
+	INSERT INTO
+		PRODUTO
+	VALUES(50,'Salto Preto',179.90,11),
+	(100,'Salto Vermelho',149.90,11),
+	(150,'Tênis Branco',159.90,22),
+	(200,'Tênis Couro',169.90,22),
+	(250,'Tênis Azul',179.90,22),
+	(300,'Sapatênis',189.90,44),
+	(350,'Meia branca',39.90,33),
+	(400,'Meia preta',29.90,33),
+	(450,'Sapatilha',49.90,55),
+	(500,'Sapato Social Masculino',249.90,66),
+	(550,'Alpargata',149.90,77),
+	(600,'Bota Cano Curto',149.90,88),
+	(650,'Bota Cano Longo',144.90,88),
+	(700,'Salto Plataforma',159.90,11),
+	(750,'Sandália',49.90,99);
+
+
+
+	INSERT INTO
+		FORNECEDO
+	VALUES('Vizzano',111),
+	('Puma',222),
+	('Marianno',333),
+	('Louis Vuitton',444),
+	('Passarela',555),
+	('Zanetti',666),
+	('Bottero',777),
+	('Dakota',888),
+	('Ferricelli',999);
+
+
+	INSERT INTO
+		RAMO
+	VALUES(11111,'sapatos'),
+	(22222,'sapato esportivo'),
+	(33333,'acessorios');
+
+
+
+	INSERT INTO 
+		TIPO
+	VALUES('celular',1),('telefone',2),('e-mail',3);
+
+
+
+	INSERT INTO
+		CONTATO
+	VALUES(21,'(11)1111-1111',111,1),
+	(22,'(22)2222-2222',222,1),
+	(23,'(33)3333-3333',333,1),
+	(24,'(44)4444-4444',444,2),
+	(30,'',444,3),
+	(25,'(55)5555-5555',555,2),
+	(26,'(66)6666-6666',666,1),
+	(27,'(77)7777-7777',777,2),
+	(28,'(88)8888-8888',888,2),
+	(29,'(99)9999-9999',999,2);
+
+
+	INSERT INTO
+		AQUISICAO
+	VALUES(19.0,101,'2019-01-01',111),
+	(19.0,202,'2019-01-01',222),
+	(19.0,303,'2019-01-01',222),
+	(19.0,404,'2019-01-01',333),
+	(19.0,505,'2019-01-01',444),
+	(19.0,606,'2019-01-01',555),
+	(19.0,707,'2019-01-01',666),
+	(19.0,880,'2019-01-01',777),
+	(69.0,878,'2019-01-01',888),
+	(19.0,898,'2019-01-01',999),
+	(39.0,858,'2019-01-01',777),
+	(19.0,304,'2019-01-01',777),
+	(29.0,838,'2019-01-01',777),
+	(19.0,828,'2019-01-01',777),
+	(19.0,818,'2019-01-01',777),
+	(19.0,909,'2019-01-01',111);
+
+
+
+	INSERT INTO 
+		Pertence
+	VALUES(111,11111),
+	(222,22222),
+	(222,33333),
+	(333,11111),
+	(444,11111),
+	(555,11111),
+	(666,11111),
+	(777,11111),
+	(888,11111),
+	(999,11111);
+
+
+	INSERT INTO 
+	Itens
+	VALUES(100,10,2,001),
+	(150,10,3,002),
+	(200,20,1,003),
+	(350,30,2,004),
+	(400,40,4,005),
+	(550,50,6,006),
+	(600,60,1,007),
+	(750,70,1,008),
+	(700,70,5,009),
+	(250,70,3,010);
+
+
+	INSERT INTO Produto_Aqusicao
+	 VALUES (50,101,50,001),
+	(100,101,50,002),
+	(150,202,50,003),
+	(200,202,50,004),
+	(250,202,50,005),
+	(300,404,50,006),
+	(350,303,50,007),
+	(400,303,50,008),
+	(450,505,50,009),
+	(500,606,50,010),
+	(550,707,50,011),
+	(600,818,50,012),
+	(650,828,50,013),
+	(700,101,50,014),
+	(750,909,50,015);
+	
 ##Junção
 
-    /* Lógico_1: */
-
-    CREATE TABLE PRODUTO (
-     codigo integer PRIMARY KEY,
-     nome varchar(30),
-     fornecedor integer,
-     tipo varchar(30),
-     quantidade_adquirida integer,
-     preco_aquisicao float,
-     data_aquisicao date,
-     preco_venda float
-    );
-
     CREATE TABLE CLIENTE (
-     codigo integer,
-     nome varchar(100),
-     idade integer,
-     sexo char
-    );
-    
-    CREATE TABLE COMPRA (
-     numero_nota integer,
-     data_compra date,
-     produto integer,
-     qtd_venda integer,
-     desconto float,
-     cliente integer
-    );
+	    nome varchar(50),
+	    sexo char,
+	    data_nascimento Date,
+	    latitude float,
+	    longitude float,
+	    codigo integer PRIMARY KEY
+	);
 
-    CREATE TABLE Fornecedor (
-     codigo integer PRIMARY KEY,
-     nome varchar(30),
-     ramo varchar(30),
-     contato varchar(15)
-    );
-     
-     INSERT INTO
-	       COMPRA
-    VALUES  (12, '2019-04-07', 001, 1, 0, 1111),
-	           (12, '2019-04-07', 002, 1, 0, 1111),
-	           (12, '2019-04-07', 003, 2, 0.2, 1111),
-	           (12, '2019-04-07', 005, 10, 0, 1111),
-	           (16, '2019-04-08', 006, 2, 0, 3333),
-	           (17, '2019-04-08', 008, 1, 0, 2222),
-	           (18, '2019-04-10', 003, 1, 0, 6666),
-	           (19, '2019-04-11', 007, 1, 0, 4444),
-	           (20, '2019-04-11', 004, 1, 0, 5555),
-	           (20, '2019-04-11', 009, 1, 0, 5555);
+	CREATE TABLE PRODUTO (
+	    codigo_produto integer PRIMARY KEY,
+	    nome varchar(50),
+	    preco_venda float,
+	    FK_CATEGORIA_cod_categoria integer
+	);
 
-    INSERT INTO
-        PRODUTO
-    VALUES  (001, 'Tênis rosa', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
-	           (002, 'Tênis branco', 44444444, 'tênis', 30, 50, '2019-03-11', 130),
-	           (003, 'Tênis preto', 44444444, 'tênis', 50, 50, '2019-03-11', 130),
-	           (004, 'Meia Puma', 22222222, 'meia', 40, 17.60, '2019-03-12', 47.90),
-	           (005, 'Sapatilha Preta', 55555555, 'sapatilha', 35, 48, '2019-03-15', 120),
-	           (006, 'Bota feminina',33333333, 'bota', 20, 89.90, '2019-03-22', 240),
-	           (007, 'Sapato masculino', 77777777, 'sapato social', 50, 78.75, '2019-04-07', 160),
-	           (008, 'Sapatilha vermelha', 66666666, 'sapatilha', 60, 53.55, '2019-03-15', 180),
-           	(009, 'Meia Adidas', 11111111, 'meia', 50, 18.30, '2019-03-12', 47.90),
-	           (010, 'Alpargata', 88888888, 'alpargata', 40, 14, '2019-04-04', 130);
+	CREATE TABLE FORNECEDO (
+	    nome varchar(50),
+	    codigo integer PRIMARY KEY
+	);
 
-    INSERT INTO
-	       FORNECEDOR
-    VALUES  (44444444, 'Converse', 'Tênis', '(44)4444-4444'),
-	           (22222222, 'Puma', 'Esportes', '(22)2222-2222'),
-	           (55555555, 'Moleca', 'Calçados Femininos', '(55)5555-5555'),	
-	           (33333333, 'Vizzano', 'Calçados Femininos', '(33)3333-3333'),
-	           (77777777, 'Luis Vuitton', 'Vestuário', '(77)7777-7777'),
-	           (66666666, 'Arezzo', 'Calçados Femininos', '(66)6666-6666'),
-	           (11111111, 'Adidas', 'Esportes', '(11)1111-1111'),
-	           (88888888, 'Marriano', 'Sapatos', '(88)8888-8888');
+	CREATE TABLE CONTATO (
+	    codigo_contato integer PRIMARY KEY,
+	    contato varchar(30),
+	    FK_FORNECEDO_codigo integer,
+	    FK_TIPO_cod_tipo integer
+	);
 
-    INSERT INTO
-	        CLIENTE
-    VALUES  (1111, 'Joana', 40, 'F'),
-           	(3333, 'Maria', 41, 'F'),
-	           (2222, 'Marcos', 38, 'M'),
-	           (6666, 'Amanda', 28, 'F'),
-	           (4444, 'Valéria', 35, 'F'),
-	           (5555, 'Jonas', 43, 'M');
-        
-        
+	CREATE TABLE CATEGORIA (
+	    cod_categoria integer PRIMARY KEY,
+	    tipo varchar(30)
+	);
 
+	CREATE TABLE COMPRA (
+	    cod_compra integer PRIMARY KEY,
+	    data Date,
+	    FK_CLIENTE_codigo integer
+	);
+
+	CREATE TABLE TIPO (
+	    tipo varchar(30),
+	    cod_tipo integer PRIMARY KEY
+	);
+
+	CREATE TABLE RAMO (
+	    cod_ramo integer PRIMARY KEY,
+	    ramo varchar(30)
+	);
+
+	CREATE TABLE AQUISICAO (
+	    preco_aquisicao float,
+	    codigo integer PRIMARY KEY,
+	    data Date,
+	    FK_FORNECEDO_codigo integer
+	);
+
+	CREATE TABLE Itens (
+	    fk_PRODUTO_codigo_produto integer,
+	    fk_COMPRA_cod_compra integer,
+	    qtd_venda integer,
+	    cod_itens varchar(100) PRIMARY KEY
+	);
+
+	CREATE TABLE Pertence (
+	    fk_FORNECEDO_codigo integer,
+	    fk_RAMO_cod_ramo integer
+	);
+
+	CREATE TABLE Produto_Aqusicao (
+	    fk_PRODUTO_codigo_produto integer,
+	    fk_AQUISICAO_codigo integer,
+	    qtd_aquisicao integer,
+	    cod varchar(100) PRIMARY KEY
+	);
+
+	ALTER TABLE PRODUTO ADD CONSTRAINT FK_PRODUTO_2
+	    FOREIGN KEY (FK_CATEGORIA_cod_categoria)
+	    REFERENCES CATEGORIA (cod_categoria)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_2
+	    FOREIGN KEY (FK_FORNECEDO_codigo)
+	    REFERENCES FORNECEDO (codigo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_3
+	    FOREIGN KEY (FK_TIPO_cod_tipo)
+	    REFERENCES TIPO (cod_tipo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE COMPRA ADD CONSTRAINT FK_COMPRA_2
+	    FOREIGN KEY (FK_CLIENTE_codigo)
+	    REFERENCES CLIENTE (codigo)
+	    ON DELETE CASCADE;
+
+	ALTER TABLE AQUISICAO ADD CONSTRAINT FK_AQUISICAO_2
+	    FOREIGN KEY (FK_FORNECEDO_codigo)
+	    REFERENCES FORNECEDO (codigo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Itens ADD CONSTRAINT FK_Itens_2
+	    FOREIGN KEY (fk_PRODUTO_codigo_produto)
+	    REFERENCES PRODUTO (codigo_produto)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Itens ADD CONSTRAINT FK_Itens_3
+	    FOREIGN KEY (fk_COMPRA_cod_compra)
+	    REFERENCES COMPRA (cod_compra)
+	    ON DELETE SET NULL;
+
+	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_1
+	    FOREIGN KEY (fk_FORNECEDO_codigo)
+	    REFERENCES FORNECEDO (codigo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_2
+	    FOREIGN KEY (fk_RAMO_cod_ramo)
+	    REFERENCES RAMO (cod_ramo)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_2
+	    FOREIGN KEY (fk_PRODUTO_codigo_produto)
+	    REFERENCES PRODUTO (codigo_produto)
+	    ON DELETE RESTRICT;
+
+	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_3
+	    FOREIGN KEY (fk_AQUISICAO_codigo)
+	    REFERENCES AQUISICAO (codigo)
+	    ON DELETE RESTRICT; 
+
+
+
+	    INSERT INTO
+		CLIENTE VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
+	('Gabriel','M','1982-11-08',40.7123528,-74.0159731,2),
+	('Pedro','M','1981-06-08',40.7142528,-74.0039731,3),
+	('Mariana','F','1970-05-09',40.7134548,-74.1159731,4),
+	('Flávia','F','1990-04-09',40.7143524,-74.0099731,5),
+	('Lucas','M','1985-02-09',40.7143520,-74.0088731,6),
+	('Maria','F','1995-01-09',40.7143533,-74.0057731,7);
+
+
+
+	INSERT INTO
+		COMPRA
+	VALUES (10,'2019-03-01',1),
+	(20,'2019-04-02',2),
+	(30,'2019-05-04',3),
+	(40,'2019-08-05',4),
+	(50,'2019-09-06',5),
+	(60,'2019-06-08',6),
+	(70,'2019-03-11',7);
+
+
+
+
+	INSERT INTO
+		CATEGORIA
+	VALUES(11,'salto alto'),
+	(22,'tênis'),
+	(33,'meia'),
+	(44,'sapatênis'),
+	(55,'sapatilha'),
+	(66,'sapato'),
+	(77,'alpargata'),
+	(88,'bota'),
+	(99,'sandália');
+
+
+
+	INSERT INTO
+		PRODUTO
+	VALUES(50,'Salto Preto',179.90,11),
+	(100,'Salto Vermelho',149.90,11),
+	(150,'Tênis Branco',159.90,22),
+	(200,'Tênis Couro',169.90,22),
+	(250,'Tênis Azul',179.90,22),
+	(300,'Sapatênis',189.90,44),
+	(350,'Meia branca',39.90,33),
+	(400,'Meia preta',29.90,33),
+	(450,'Sapatilha',49.90,55),
+	(500,'Sapato Social Masculino',249.90,66),
+	(550,'Alpargata',149.90,77),
+	(600,'Bota Cano Curto',149.90,88),
+	(650,'Bota Cano Longo',144.90,88),
+	(700,'Salto Plataforma',159.90,11),
+	(750,'Sandália',49.90,99);
+
+
+
+	INSERT INTO
+		FORNECEDO
+	VALUES('Vizzano',111),
+	('Puma',222),
+	('Marianno',333),
+	('Louis Vuitton',444),
+	('Passarela',555),
+	('Zanetti',666),
+	('Bottero',777),
+	('Dakota',888),
+	('Ferricelli',999);
+
+
+	INSERT INTO
+		RAMO
+	VALUES(11111,'sapatos'),
+	(22222,'sapato esportivo'),
+	(33333,'acessorios');
+
+
+
+	INSERT INTO 
+		TIPO
+	VALUES('celular',1),('telefone',2),('e-mail',3);
+
+
+
+	INSERT INTO
+		CONTATO
+	VALUES(21,'(11)1111-1111',111,1),
+	(22,'(22)2222-2222',222,1),
+	(23,'(33)3333-3333',333,1),
+	(24,'(44)4444-4444',444,2),
+	(30,'',444,3),
+	(25,'(55)5555-5555',555,2),
+	(26,'(66)6666-6666',666,1),
+	(27,'(77)7777-7777',777,2),
+	(28,'(88)8888-8888',888,2),
+	(29,'(99)9999-9999',999,2);
+
+
+	INSERT INTO
+		AQUISICAO
+	VALUES(19.0,101,'2019-01-01',111),
+	(19.0,202,'2019-01-01',222),
+	(19.0,303,'2019-01-01',222),
+	(19.0,404,'2019-01-01',333),
+	(19.0,505,'2019-01-01',444),
+	(19.0,606,'2019-01-01',555),
+	(19.0,707,'2019-01-01',666),
+	(19.0,880,'2019-01-01',777),
+	(69.0,878,'2019-01-01',888),
+	(19.0,898,'2019-01-01',999),
+	(39.0,858,'2019-01-01',777),
+	(19.0,304,'2019-01-01',777),
+	(29.0,838,'2019-01-01',777),
+	(19.0,828,'2019-01-01',777),
+	(19.0,818,'2019-01-01',777),
+	(19.0,909,'2019-01-01',111);
+
+
+
+	INSERT INTO 
+		Pertence
+	VALUES(111,11111),
+	(222,22222),
+	(222,33333),
+	(333,11111),
+	(444,11111),
+	(555,11111),
+	(666,11111),
+	(777,11111),
+	(888,11111),
+	(999,11111);
+
+
+	INSERT INTO 
+	Itens
+	VALUES(100,10,2,001),
+	(150,10,3,002),
+	(200,20,1,003),
+	(350,30,2,004),
+	(400,40,4,005),
+	(550,50,6,006),
+	(600,60,1,007),
+	(750,70,1,008),
+	(700,70,5,009),
+	(250,70,3,010);
+
+
+	INSERT INTO Produto_Aqusicao
+	 VALUES (50,101,50,001),
+	(100,101,50,002),
+	(150,202,50,003),
+	(200,202,50,004),
+	(250,202,50,005),
+	(300,404,50,006),
+	(350,303,50,007),
+	(400,303,50,008),
+	(450,505,50,009),
+	(500,606,50,010),
+	(550,707,50,011),
+	(600,818,50,012),
+	(650,828,50,013),
+	(700,101,50,014),
+	(750,909,50,015);
+	   
 ## Marco de Entrega 08 em: (29/05/2019)<br>
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
