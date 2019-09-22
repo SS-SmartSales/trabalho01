@@ -289,7 +289,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
         
 	    INSERT INTO
-		CLIENTE VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
+		CLIENTE 
+	VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
 	('Gabriel','M','1982-11-08',40.7123528,-74.0159731,2),
 	('Pedro','M','1981-06-08',40.7142528,-74.0039731,3),
 	('Mariana','F','1970-05-09',40.7134548,-74.1159731,4),
@@ -588,7 +589,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 
 	    INSERT INTO
-		CLIENTE VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
+		CLIENTE 
+	VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
 	('Gabriel','M','1982-11-08',40.7123528,-74.0159731,2),
 	('Pedro','M','1981-06-08',40.7142528,-74.0039731,3),
 	('Mariana','F','1970-05-09',40.7134548,-74.1159731,4),
