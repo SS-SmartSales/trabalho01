@@ -66,35 +66,59 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     [Grupo02]: [Rodolfo Luiz de Oliveira e Gustavo Olmo Santana]
 
 #### 5.2 DESCRIÇÃO DOS DADOS 
-    
-    Tabela Produto
-    CODIGO: Campo que armazena os códigos de cada produto.
-    PRODUTO: Campo que armazena os nomes de cada produto .
-    FORNECEDOR: Campo que armazena o código dos fornecedores de cada produto.
-    DATA_AQUISICAO: Campo que armazena as datas de compra dos produtos.
-    QTD_ADQUIRIDA: Campo que armazena as quantidades de produto comprados de um fornecedor.
-    PRECO_AQUISICAO: Campo que armazena os preços de compra de cada produto.
-    PRECO_VENDA: Campo que armazena os preços de venda de cada produto.
-    
-    Tabela Vendas
-    NUMERO_NOTA: Campo que armazena o código de identificação da nota fiscal emitida ao final da venda de produtos.
-    CODIGO: Campo que armazena o código do produto vendido.
-    DATA_COMPRA: Campo que armazena a data de venda do produto.
-    
-    Tabela Fornecedores
-    CODIGO: Campo que armazena o Cadastro Nacional da Pessoa Jurídica de cada fornecedor.
-    NOME: Campo que armazena o nome de cada empresa fornecedora.
-    RAMO: Campo que armazena o tipo de mercadoria que a empresa produz.
-    CONTATO: Campo que armazena o contato do fornecedor.
-    
-    Tabela Clientes
-    CODIGO: Campo que armazena o código do cliente.
-    NOME: Campo que armazena o nome do cliente cadastrado.
-    IDADE: Campo que armazena a idade do cliente.
-    SEXO: Campo que armazena o sexo do cliente.
-    LATITUDE: Campo que armazena a latitude do cliente.
-    LONGITUDE: Campo que armazena a longitude do cliente.
+   
+	Tabela Cliente
+NOME: nome do cliente.
+SEXO: sexo do cliente.
+DATA_NASCIMENTO: data de nascimento do cliente.
+LATITUDE: latitude da residência.
+LONGITUDE: longitude da residência. 
+CODIGO: código identificador do cliente.
 
+	Tabela Compra
+CODIGO_COMPRA: código identificador da compra.
+DATA: data que a compra foi efetuada.
+
+	Tabela Itens
+QTD_VENDA: quantidade do produro que vai ser comprado.
+COD_ITENS: código identificador do cliente.
+
+	Tabela Produto
+CODIGO_PRODUTO: código identificador do produto.
+NOME: nome do produto.
+PRECO_VENDA: preço de venda do produto.
+
+	Tabela Categoria
+COD_CATEGORIA: código identificador da categoria.
+TIPO: nome do tipo de categoria.
+
+	Tabela Produto_Aqusicao
+COD: código identificador de produto_aquisição.
+QTD_AQUISICAO:quantidade do produto adquirido.
+
+	Tabela Aquisicao
+CODIGO: código identificador da aquisição.
+DATA: data da aquisição do produto.
+PRECO_AQUISICAO: preço da aquisição do produto.
+
+	Tabela Fornecedo
+CODIGO: código identificador do fornecedor.
+NOME: nome do fornecedor.
+
+	Tabela Ramo
+COD_RAMO: código identificador do ramo.
+RAMO: nome do ramo.
+
+	Tabela Contato
+CODIGO_CONTATO: código identificador do contato.
+CONTATO: contato do fornecedor.
+
+	Tabela Tipo
+TIPO: nome do tipo do contato.
+COD_TIPO: código identificador do tipo de contato.
+
+    
+    
 ### 6	MODELO LÓGICO<br>
 
 > Aqui consta o modelo lógico do trabalho realizado pelo grupo.
