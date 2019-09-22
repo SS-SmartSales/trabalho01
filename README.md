@@ -760,10 +760,20 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Produto.png)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Fornecedor.png)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Compra.png)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/Cliente.png)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/1.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/2.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/3.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/4.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/5.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/6.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/7.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/8.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/9.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/10.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/11.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/12.PNG)
+
+
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
