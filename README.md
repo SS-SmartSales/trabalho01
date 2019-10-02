@@ -47,7 +47,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     CATEGORIA: Categoriza os produtos.
     PRODUTO_AQUSICAO: Quantifica os produtos comprados.
     AQUISICAO: Controla a entrada dos produtos e caracteriza preço de aquisição.
-    FORNECEDO: Identifica o fornecedor com nome e código.
+    FORNECEDOR: Identifica o fornecedor com nome e código.
     RAMO: Determina o ramo do fornecedor.
     CONTATO: Armazena e codifica o contato do fornecedor.
     TIPO: Categoriza o tipo de contato do fornecedor.
@@ -121,7 +121,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 *PRECO_AQUISICAO: preço da aquisição do produto.
 
-	Tabela Fornecedo
+	Tabela Fornecedor
 
 *CODIGO: código identificador do fornecedor.
 
