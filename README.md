@@ -69,81 +69,81 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
    
 	Tabela Cliente
 
-*NOME: nome do cliente.
+	*NOME: nome do cliente.
 
-*SEXO: sexo do cliente.
+	*SEXO: sexo do cliente.
 
-*DATA_NASCIMENTO: data de nascimento do cliente.
+	*DATA_NASCIMENTO: data de nascimento do cliente.
 
-*LATITUDE: latitude da residência.
+	*LATITUDE: latitude da residência.
 
-*LONGITUDE: longitude da residência. 
+	*LONGITUDE: longitude da residência. 
 
-*CODIGO: código identificador do cliente.
+	*CODIGO: código identificador do cliente.
 
 	Tabela Compra
 
-*CODIGO_COMPRA: código identificador da compra.
+	*CODIGO_COMPRA: código identificador da compra.
 
-*DATA: data que a compra foi efetuada.
+	*DATA: data que a compra foi efetuada.
 
 	Tabela Itens
 
-*QTD_VENDA: quantidade do produro que vai ser comprado.
+	*QTD_VENDA: quantidade do produro que vai ser comprado.
 
-*COD_ITENS: código identificador do cliente.
+	*COD_ITENS: código identificador do cliente.
 
 	Tabela Produto
 
-*CODIGO_PRODUTO: código identificador do produto.
+	*CODIGO_PRODUTO: código identificador do produto.
 
-*NOME: nome do produto.
+	*NOME: nome do produto.
 
-*PRECO_VENDA: preço de venda do produto.
+	*PRECO_VENDA: preço de venda do produto.
 
 	Tabela Categoria
 
-*COD_CATEGORIA: código identificador da categoria.
+	*COD_CATEGORIA: código identificador da categoria.
 
-*TIPO: nome do tipo de categoria.
+	*TIPO: nome do tipo de categoria.
 
 	Tabela Produto_Aqusicao
 
-*COD: código identificador de produto_aquisição.
+	*COD: código identificador de produto_aquisição.
 
-*QTD_AQUISICAO:quantidade do produto adquirido.
+	*QTD_AQUISICAO:quantidade do produto adquirido.
 
 	Tabela Aquisicao
 
-*CODIGO: código identificador da aquisição.
+	*CODIGO: código identificador da aquisição.
 
-*DATA: data da aquisição do produto.
+	*DATA: data da aquisição do produto.
 
-*PRECO_AQUISICAO: preço da aquisição do produto.
+	*PRECO_AQUISICAO: preço da aquisição do produto.
 
 	Tabela Fornecedor
 
-*CODIGO: código identificador do fornecedor.
+	*CODIGO: código identificador do fornecedor.
 
-*NOME: nome do fornecedor.
+	*NOME: nome do fornecedor.
 
 	Tabela Ramo
 
-*COD_RAMO: código identificador do ramo.
+	*COD_RAMO: código identificador do ramo.
 
-*RAMO: nome do ramo.
+	*RAMO: nome do ramo.
 
 	Tabela Contato
 
-*CODIGO_CONTATO: código identificador do contato.
+	*CODIGO_CONTATO: código identificador do contato.
 
-*CONTATO: contato do fornecedor.
+	*CONTATO: contato do fornecedor.
 
 	Tabela Tipo
 
-*TIPO: nome do tipo do contato.
+	*TIPO: nome do tipo do contato.
 
-*COD_TIPO: código identificador do tipo de contato.
+	*COD_TIPO: código identificador do tipo de contato.
 
     
     
