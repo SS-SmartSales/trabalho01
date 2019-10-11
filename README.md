@@ -155,7 +155,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 ### 7	MODELO FÍSICO<br>
 
-	   CREATE TABLE CLIENTE (
+	CREATE TABLE CLIENTE (
 	    nome varchar(50),
 	    sexo char,
 	    data_nascimento Date,
@@ -171,7 +171,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    FK_CATEGORIA_cod_categoria integer
 	);
 
-	CREATE TABLE FORNECEDO (
+	CREATE TABLE FORNECEDOR (
 	    nome varchar(50),
 	    codigo integer PRIMARY KEY
 	);
@@ -179,7 +179,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	CREATE TABLE CONTATO (
 	    codigo_contato integer PRIMARY KEY,
 	    contato varchar(30),
-	    FK_FORNECEDO_codigo integer,
+	    FK_FORNECEDOR_codigo integer,
 	    FK_TIPO_cod_tipo integer
 	);
 
@@ -208,7 +208,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    preco_aquisicao float,
 	    codigo integer PRIMARY KEY,
 	    data Date,
-	    FK_FORNECEDO_codigo integer
+	    FK_FORNECEDOR_codigo integer
 	);
 
 	CREATE TABLE Itens (
@@ -219,11 +219,11 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	);
 
 	CREATE TABLE Pertence (
-	    fk_FORNECEDO_codigo integer,
+	    fk_FORNECEDOR_codigo integer,
 	    fk_RAMO_cod_ramo integer
 	);
 
-	CREATE TABLE Produto_Aqusicao (
+	CREATE TABLE Produto_Aquisicao (
 	    fk_PRODUTO_codigo_produto integer,
 	    fk_AQUISICAO_codigo integer,
 	    qtd_aquisicao integer,
@@ -236,8 +236,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_2
-	    FOREIGN KEY (FK_FORNECEDO_codigo)
-	    REFERENCES FORNECEDO (codigo)
+	    FOREIGN KEY (FK_FORNECEDOR_codigo)
+	    REFERENCES FORNECEDOR (codigo)
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_3
@@ -251,8 +251,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    ON DELETE CASCADE;
 
 	ALTER TABLE AQUISICAO ADD CONSTRAINT FK_AQUISICAO_2
-	    FOREIGN KEY (FK_FORNECEDO_codigo)
-	    REFERENCES FORNECEDO (codigo)
+	    FOREIGN KEY (FK_FORNECEDOR_codigo)
+	    REFERENCES FORNECEDOR (codigo)
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE Itens ADD CONSTRAINT FK_Itens_2
@@ -266,8 +266,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    ON DELETE SET NULL;
 
 	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_1
-	    FOREIGN KEY (fk_FORNECEDO_codigo)
-	    REFERENCES FORNECEDO (codigo)
+	    FOREIGN KEY (fk_FORNECEDOR_codigo)
+	    REFERENCES FORNECEDOR (codigo)
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_2
@@ -275,16 +275,15 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    REFERENCES RAMO (cod_ramo)
 	    ON DELETE RESTRICT;
 
-	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_2
+	ALTER TABLE Produto_Aquisicao ADD CONSTRAINT FK_Produto_Aquisicao_2
 	    FOREIGN KEY (fk_PRODUTO_codigo_produto)
 	    REFERENCES PRODUTO (codigo_produto)
 	    ON DELETE RESTRICT;
 
-	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_3
+	ALTER TABLE Produto_Aquisicao ADD CONSTRAINT FK_Produto_Aquisicao_3
 	    FOREIGN KEY (fk_AQUISICAO_codigo)
 	    REFERENCES AQUISICAO (codigo)
 	    ON DELETE RESTRICT; 
-	    
 	    
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
         
@@ -456,7 +455,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	
 ##Junção
 
-    CREATE TABLE CLIENTE (
+	   CREATE TABLE CLIENTE (
 	    nome varchar(50),
 	    sexo char,
 	    data_nascimento Date,
@@ -472,7 +471,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    FK_CATEGORIA_cod_categoria integer
 	);
 
-	CREATE TABLE FORNECEDO (
+	CREATE TABLE FORNECEDOR (
 	    nome varchar(50),
 	    codigo integer PRIMARY KEY
 	);
@@ -480,7 +479,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	CREATE TABLE CONTATO (
 	    codigo_contato integer PRIMARY KEY,
 	    contato varchar(30),
-	    FK_FORNECEDO_codigo integer,
+	    FK_FORNECEDOR_codigo integer,
 	    FK_TIPO_cod_tipo integer
 	);
 
@@ -509,7 +508,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    preco_aquisicao float,
 	    codigo integer PRIMARY KEY,
 	    data Date,
-	    FK_FORNECEDO_codigo integer
+	    FK_FORNECEDOR_codigo integer
 	);
 
 	CREATE TABLE Itens (
@@ -520,11 +519,11 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	);
 
 	CREATE TABLE Pertence (
-	    fk_FORNECEDO_codigo integer,
+	    fk_FORNECEDOR_codigo integer,
 	    fk_RAMO_cod_ramo integer
 	);
 
-	CREATE TABLE Produto_Aqusicao (
+	CREATE TABLE Produto_Aquisicao (
 	    fk_PRODUTO_codigo_produto integer,
 	    fk_AQUISICAO_codigo integer,
 	    qtd_aquisicao integer,
@@ -537,8 +536,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_2
-	    FOREIGN KEY (FK_FORNECEDO_codigo)
-	    REFERENCES FORNECEDO (codigo)
+	    FOREIGN KEY (FK_FORNECEDOR_codigo)
+	    REFERENCES FORNECEDOR (codigo)
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE CONTATO ADD CONSTRAINT FK_CONTATO_3
@@ -552,8 +551,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    ON DELETE CASCADE;
 
 	ALTER TABLE AQUISICAO ADD CONSTRAINT FK_AQUISICAO_2
-	    FOREIGN KEY (FK_FORNECEDO_codigo)
-	    REFERENCES FORNECEDO (codigo)
+	    FOREIGN KEY (FK_FORNECEDOR_codigo)
+	    REFERENCES FORNECEDOR (codigo)
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE Itens ADD CONSTRAINT FK_Itens_2
@@ -567,8 +566,8 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    ON DELETE SET NULL;
 
 	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_1
-	    FOREIGN KEY (fk_FORNECEDO_codigo)
-	    REFERENCES FORNECEDO (codigo)
+	    FOREIGN KEY (fk_FORNECEDOR_codigo)
+	    REFERENCES FORNECEDOR (codigo)
 	    ON DELETE RESTRICT;
 
 	ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_2
@@ -576,17 +575,15 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    REFERENCES RAMO (cod_ramo)
 	    ON DELETE RESTRICT;
 
-	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_2
+	ALTER TABLE Produto_Aquisicao ADD CONSTRAINT FK_Produto_Aquisicao_2
 	    FOREIGN KEY (fk_PRODUTO_codigo_produto)
 	    REFERENCES PRODUTO (codigo_produto)
 	    ON DELETE RESTRICT;
 
-	ALTER TABLE Produto_Aqusicao ADD CONSTRAINT FK_Produto_Aqusicao_3
+	ALTER TABLE Produto_Aquisicao ADD CONSTRAINT FK_Produto_Aquisicao_3
 	    FOREIGN KEY (fk_AQUISICAO_codigo)
 	    REFERENCES AQUISICAO (codigo)
-	    ON DELETE RESTRICT; 
-
-
+	    ON DELETE RESTRICT;
 
 	    INSERT INTO
 		CLIENTE 
