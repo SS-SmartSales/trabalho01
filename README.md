@@ -453,6 +453,224 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	(700,101,50,014),
 	(750,909,50,015);
 	
+### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
+
+	#ExecutadoCLIENTE
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(101):
+	  x = randint(0,1)
+	  if (x == 0):
+	    nome = fake.name_male()
+	    sex = 'M'
+	  else:
+	    nome = fake.name_female()
+	    sex = 'F'
+
+	  data_nascimento = fake.date(pattern="%Y-%m-%d", end_datetime=None)
+	  lat = fake.latitude()
+	  long = fake.longitude()
+	  cod = i + 1
+	  #print(nome,sex,data_nascimento,lat,long,cod)
+	  insert_instruction = """insert into CLIENTE values (%s,%s,%s,%s,%s,%s)"""
+	  insert_values = (nome,sex,data_nascimento,lat,long,cod)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  
+	  #ExecutadoCATEGORIA
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	tipoProd = ["Categ1","Categ2", "Categ3", "Categ4","Categ5"]
+	for i in range(5):
+	  cod_categoria = i +1
+	  tipo = tipoProd[i]
+
+	  print(cod_categoria,tipo)
+	  insert_instruction = """insert into CATEGORIA values (%s,%s)"""
+	  insert_values = (cod_categoria,tipo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  #ExecutadoTIPO
+	cur.execute("start transaction")
+	t = ["T1","T2","T3","T4","T5"]
+	#fake = faker.Faker()
+	for i in range(4):
+	    cod_tipo = i + 1
+	    tipo = t[i]
+    
+	    print(tipo,cod_tipo)
+	    insert_instruction = """insert into TIPO values (%s,%s)"""
+	    insert_values = (tipo,cod_tipo)
+	    cur.execute(insert_instruction, insert_values)
+	    cur.execute("commit")
+	    
+	    #ExecutadoFORNECEDOR
+	cur.execute("start transaction")
+	f = ["MarianaShop","GabrielShop","RodolfoShop","AnaShop","CalebeShop","MateusShop","EsShop","RodoShop","AnaShop","CalShop"]
+	fake = faker.Faker()
+	for i in range(10):
+	    codigo = i +1
+	    nome = f[i]
+	    print(codigo,nome)
+	    insert_instruction = """insert into fornecedor values (%s,%s)"""
+	    insert_values = (nome,codigo)
+	    cur.execute(insert_instruction, insert_values)
+	    cur.execute("commit")
+	    
+	    #ExecutadoCOMPRA
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(100):
+	  cod = i + 10
+	  data = fake.date(pattern="%Y-%m-%d", end_datetime=None)
+	  fk_cod_Cliente = randint(1,101)
+	  print(cod, data, fk_cod_Cliente)
+	  insert_instruction = """insert into COMPRA values (%s,%s,%s)"""
+	  insert_values = (cod,data, fk_cod_Cliente)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoPRODUTO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(101):
+	  cod_produto = i + 100
+	  nome = "Produto"+ str(i+1)
+	  preco = round(random.uniform(100, 1000),2)
+	  fk_cod_categoria = randint(1,5)
+	  print(cod_produto,nome,preco,fk_cod_categoria)
+	  insert_instruction = """insert into PRODUTO values (%s,%s,%s,%s)"""
+	  insert_values = (cod_produto,nome,preco,fk_cod_categoria)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoRAMO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(30):
+	  cod_ramo = i +1
+	  ramo = "Ramo"+ str(i+1)
+	  print(cod_ramo,ramo)
+	  insert_instruction = """insert into Ramo values (%s,%s)"""
+	  insert_values = (cod_ramo,ramo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoPERTENCE
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(1,11):
+	  fk_cod_fornecedor = i
+	  fk_cod_ramo = randint(1,30)
+	  print(fk_cod_fornecedor,fk_cod_ramo)
+	  insert_instruction = """insert into Pertence values (%s,%s)"""
+	  insert_values = (fk_cod_fornecedor,fk_cod_ramo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+
+	for x in range(10):
+	  fk_cod_fornecedor = randint(1,10)
+	  fk_cod_ramo = randint(1,30)
+	  print(fk_cod_fornecedor,fk_cod_ramo)
+
+	  insert_instruction = """insert into Pertence values (%s,%s)"""
+	  insert_values = (fk_cod_fornecedor,fk_cod_ramo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  #ExecutadoCONTATO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(10):
+	  cod_contato = i +1
+	  fk_fornecedor = i +1
+	  contato =""
+	  for x in range(9):
+	    contato = contato + str(randint(1,9))
+	    #fk_fornecedor = i +1
+	    fk_tipo = randint(1,4)
+
+
+	  print(cod_contato,contato,fk_fornecedor,fk_tipo)
+	  insert_instruction = """insert into CONTATO values (%s,%s,%s,%s)"""
+	  insert_values = (cod_contato,contato,fk_fornecedor,fk_tipo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoITENS
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(100):
+	  fk_produto = i + 100
+	  fk_compra = i + 10
+	  qtd_venda = randint(1,50)
+	  cod_itens = i+1
+
+
+	  print(fk_produto,fk_compra,qtd_venda,cod_itens)
+	  insert_instruction = """insert into Itens values (%s,%s,%s,%s)"""
+	  insert_values = (fk_produto,fk_compra,qtd_venda,cod_itens)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoAQUISIÇÃO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+
+	for i in range(100):
+	  preco_aquisicao = round(random.uniform(10, 100),2)
+	  cod = i + 1
+	  data = fake.date(pattern="%Y-%m-%d", end_datetime=None)
+	  fk_fornecedor = randint(1,10)
+
+
+	  print(preco_aquisicao,cod,data,fk_fornecedor)
+	  insert_instruction = """insert into AQUISICAO values (%s,%s,%s,%s)"""
+	  insert_values = (preco_aquisicao,cod,data,fk_fornecedor)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  #ExecutadoPRODUTO_AQUISIÇÃO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+
+	for i in range(100):
+	  fk_produto = i + 100
+	  fk_aquisicao = i + 1
+	  qtd_aquisicao = randint(50,101)
+	  cod = str(i+1)
+
+
+	  print(fk_produto,fk_aquisicao,qtd_aquisicao,cod)
+	  insert_instruction = """insert into Produto_Aquisicao values (%s,%s,%s,%s)"""
+	  insert_values = (fk_produto,fk_aquisicao,qtd_aquisicao,cod)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+	
 ##Junção
 
 	   CREATE TABLE CLIENTE (
@@ -585,172 +803,208 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	    REFERENCES AQUISICAO (codigo)
 	    ON DELETE RESTRICT;
 
-	    INSERT INTO
-		CLIENTE 
-	VALUES ('Joana','F','1989-12-01',40.7143528,-73.0059731,1),
-	('Gabriel','M','1982-11-08',40.7123528,-74.0159731,2),
-	('Pedro','M','1981-06-08',40.7142528,-74.0039731,3),
-	('Mariana','F','1970-05-09',40.7134548,-74.1159731,4),
-	('Flávia','F','1990-04-09',40.7143524,-74.0099731,5),
-	('Lucas','M','1985-02-09',40.7143520,-74.0088731,6),
-	('Maria','F','1995-01-09',40.7143533,-74.0057731,7);
+	  
+	#ExecutadoCLIENTE
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(101):
+	  x = randint(0,1)
+	  if (x == 0):
+	    nome = fake.name_male()
+	    sex = 'M'
+	  else:
+	    nome = fake.name_female()
+	    sex = 'F'
+
+	  data_nascimento = fake.date(pattern="%Y-%m-%d", end_datetime=None)
+	  lat = fake.latitude()
+	  long = fake.longitude()
+	  cod = i + 1
+	  #print(nome,sex,data_nascimento,lat,long,cod)
+	  insert_instruction = """insert into CLIENTE values (%s,%s,%s,%s,%s,%s)"""
+	  insert_values = (nome,sex,data_nascimento,lat,long,cod)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  
+	  #ExecutadoCATEGORIA
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	tipoProd = ["Categ1","Categ2", "Categ3", "Categ4","Categ5"]
+	for i in range(5):
+	  cod_categoria = i +1
+	  tipo = tipoProd[i]
+
+	  print(cod_categoria,tipo)
+	  insert_instruction = """insert into CATEGORIA values (%s,%s)"""
+	  insert_values = (cod_categoria,tipo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  #ExecutadoTIPO
+	cur.execute("start transaction")
+	t = ["T1","T2","T3","T4","T5"]
+	#fake = faker.Faker()
+	for i in range(4):
+	    cod_tipo = i + 1
+	    tipo = t[i]
+    
+	    print(tipo,cod_tipo)
+	    insert_instruction = """insert into TIPO values (%s,%s)"""
+	    insert_values = (tipo,cod_tipo)
+	    cur.execute(insert_instruction, insert_values)
+	    cur.execute("commit")
+	    
+	    #ExecutadoFORNECEDOR
+	cur.execute("start transaction")
+	f = ["MarianaShop","GabrielShop","RodolfoShop","AnaShop","CalebeShop","MateusShop","EsShop","RodoShop","AnaShop","CalShop"]
+	fake = faker.Faker()
+	for i in range(10):
+	    codigo = i +1
+	    nome = f[i]
+	    print(codigo,nome)
+	    insert_instruction = """insert into fornecedor values (%s,%s)"""
+	    insert_values = (nome,codigo)
+	    cur.execute(insert_instruction, insert_values)
+	    cur.execute("commit")
+	    
+	    #ExecutadoCOMPRA
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(100):
+	  cod = i + 10
+	  data = fake.date(pattern="%Y-%m-%d", end_datetime=None)
+	  fk_cod_Cliente = randint(1,101)
+	  print(cod, data, fk_cod_Cliente)
+	  insert_instruction = """insert into COMPRA values (%s,%s,%s)"""
+	  insert_values = (cod,data, fk_cod_Cliente)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoPRODUTO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(101):
+	  cod_produto = i + 100
+	  nome = "Produto"+ str(i+1)
+	  preco = round(random.uniform(100, 1000),2)
+	  fk_cod_categoria = randint(1,5)
+	  print(cod_produto,nome,preco,fk_cod_categoria)
+	  insert_instruction = """insert into PRODUTO values (%s,%s,%s,%s)"""
+	  insert_values = (cod_produto,nome,preco,fk_cod_categoria)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoRAMO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(30):
+	  cod_ramo = i +1
+	  ramo = "Ramo"+ str(i+1)
+	  print(cod_ramo,ramo)
+	  insert_instruction = """insert into Ramo values (%s,%s)"""
+	  insert_values = (cod_ramo,ramo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoPERTENCE
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(1,11):
+	  fk_cod_fornecedor = i
+	  fk_cod_ramo = randint(1,30)
+	  print(fk_cod_fornecedor,fk_cod_ramo)
+	  insert_instruction = """insert into Pertence values (%s,%s)"""
+	  insert_values = (fk_cod_fornecedor,fk_cod_ramo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+
+	for x in range(10):
+	  fk_cod_fornecedor = randint(1,10)
+	  fk_cod_ramo = randint(1,30)
+	  print(fk_cod_fornecedor,fk_cod_ramo)
+
+	  insert_instruction = """insert into Pertence values (%s,%s)"""
+	  insert_values = (fk_cod_fornecedor,fk_cod_ramo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  #ExecutadoCONTATO
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(10):
+	  cod_contato = i +1
+	  fk_fornecedor = i +1
+	  contato =""
+	  for x in range(9):
+	    contato = contato + str(randint(1,9))
+	    #fk_fornecedor = i +1
+	    fk_tipo = randint(1,4)
 
 
-
-	INSERT INTO
-		COMPRA
-	VALUES (10,'2019-03-01',1),
-	(20,'2019-04-02',2),
-	(30,'2019-05-04',3),
-	(40,'2019-08-05',4),
-	(50,'2019-09-06',5),
-	(60,'2019-06-08',6),
-	(70,'2019-03-11',7);
-
-
-
-
-	INSERT INTO
-		CATEGORIA
-	VALUES(11,'salto alto'),
-	(22,'tênis'),
-	(33,'meia'),
-	(44,'sapatênis'),
-	(55,'sapatilha'),
-	(66,'sapato'),
-	(77,'alpargata'),
-	(88,'bota'),
-	(99,'sandália');
+	  print(cod_contato,contato,fk_fornecedor,fk_tipo)
+	  insert_instruction = """insert into CONTATO values (%s,%s,%s,%s)"""
+	  insert_values = (cod_contato,contato,fk_fornecedor,fk_tipo)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoITENS
+	cur.execute("start transaction")
+	fake = faker.Faker()
+	for i in range(100):
+	  fk_produto = i + 100
+	  fk_compra = i + 10
+	  qtd_venda = randint(1,50)
+	  cod_itens = i+1
 
 
+	  print(fk_produto,fk_compra,qtd_venda,cod_itens)
+	  insert_instruction = """insert into Itens values (%s,%s,%s,%s)"""
+	  insert_values = (fk_produto,fk_compra,qtd_venda,cod_itens)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
+	  #ExecutadoAQUISIÇÃO
+	cur.execute("start transaction")
+	fake = faker.Faker()
 
-	INSERT INTO
-		PRODUTO
-	VALUES(50,'Salto Preto',179.90,11),
-	(100,'Salto Vermelho',149.90,11),
-	(150,'Tênis Branco',159.90,22),
-	(200,'Tênis Couro',169.90,22),
-	(250,'Tênis Azul',179.90,22),
-	(300,'Sapatênis',189.90,44),
-	(350,'Meia branca',39.90,33),
-	(400,'Meia preta',29.90,33),
-	(450,'Sapatilha',49.90,55),
-	(500,'Sapato Social Masculino',249.90,66),
-	(550,'Alpargata',149.90,77),
-	(600,'Bota Cano Curto',149.90,88),
-	(650,'Bota Cano Longo',144.90,88),
-	(700,'Salto Plataforma',159.90,11),
-	(750,'Sandália',49.90,99);
+	for i in range(100):
+	  preco_aquisicao = round(random.uniform(10, 100),2)
+	  cod = i + 1
+	  data = fake.date(pattern="%Y-%m-%d", end_datetime=None)
+	  fk_fornecedor = randint(1,10)
 
 
+	  print(preco_aquisicao,cod,data,fk_fornecedor)
+	  insert_instruction = """insert into AQUISICAO values (%s,%s,%s,%s)"""
+	  insert_values = (preco_aquisicao,cod,data,fk_fornecedor)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  #ExecutadoPRODUTO_AQUISIÇÃO
+	cur.execute("start transaction")
+	fake = faker.Faker()
 
-	INSERT INTO
-		FORNECEDO
-	VALUES('Vizzano',111),
-	('Puma',222),
-	('Marianno',333),
-	('Louis Vuitton',444),
-	('Passarela',555),
-	('Zanetti',666),
-	('Bottero',777),
-	('Dakota',888),
-	('Ferricelli',999);
-
-
-	INSERT INTO
-		RAMO
-	VALUES(11111,'sapatos'),
-	(22222,'sapato esportivo'),
-	(33333,'acessorios');
+	for i in range(100):
+	  fk_produto = i + 100
+	  fk_aquisicao = i + 1
+	  qtd_aquisicao = randint(50,101)
+	  cod = str(i+1)
 
 
-
-	INSERT INTO 
-		TIPO
-	VALUES('celular',1),('telefone',2),('e-mail',3);
-
-
-
-	INSERT INTO
-		CONTATO
-	VALUES(21,'(11)1111-1111',111,1),
-	(22,'(22)2222-2222',222,1),
-	(23,'(33)3333-3333',333,1),
-	(24,'(44)4444-4444',444,2),
-	(30,'louisvuitton@gmail.com',444,3),
-	(25,'(55)5555-5555',555,2),
-	(26,'(66)6666-6666',666,1),
-	(27,'(77)7777-7777',777,2),
-	(28,'(88)8888-8888',888,2),
-	(29,'(99)9999-9999',999,2);
-
-
-	INSERT INTO
-		AQUISICAO
-	VALUES(19.0,101,'2019-01-01',111),
-	(19.0,202,'2019-01-01',222),
-	(19.0,303,'2019-01-01',222),
-	(19.0,404,'2019-01-01',333),
-	(19.0,505,'2019-01-01',444),
-	(19.0,606,'2019-01-01',555),
-	(19.0,707,'2019-01-01',666),
-	(19.0,880,'2019-01-01',777),
-	(69.0,878,'2019-01-01',888),
-	(19.0,898,'2019-01-01',999),
-	(39.0,858,'2019-01-01',777),
-	(19.0,304,'2019-01-01',777),
-	(29.0,838,'2019-01-01',777),
-	(19.0,828,'2019-01-01',777),
-	(19.0,818,'2019-01-01',777),
-	(19.0,909,'2019-01-01',111);
-
-
-
-	INSERT INTO 
-		Pertence
-	VALUES(111,11111),
-	(222,22222),
-	(222,33333),
-	(333,11111),
-	(444,11111),
-	(555,11111),
-	(666,11111),
-	(777,11111),
-	(888,11111),
-	(999,11111);
-
-
-	INSERT INTO 
-	Itens
-	VALUES(100,10,2,001),
-	(150,10,3,002),
-	(200,20,1,003),
-	(350,30,2,004),
-	(400,40,4,005),
-	(550,50,6,006),
-	(600,60,1,007),
-	(750,70,1,008),
-	(700,70,5,009),
-	(250,70,3,010);
-
-
-	INSERT INTO Produto_Aqusicao
-	 VALUES (50,101,50,001),
-	(100,101,50,002),
-	(150,202,50,003),
-	(200,202,50,004),
-	(250,202,50,005),
-	(300,404,50,006),
-	(350,303,50,007),
-	(400,303,50,008),
-	(450,505,50,009),
-	(500,606,50,010),
-	(550,707,50,011),
-	(600,818,50,012),
-	(650,828,50,013),
-	(700,101,50,014),
-	(750,909,50,015);
-	   
+	  print(fk_produto,fk_aquisicao,qtd_aquisicao,cod)
+	  insert_instruction = """insert into Produto_Aquisicao values (%s,%s,%s,%s)"""
+	  insert_values = (fk_produto,fk_aquisicao,qtd_aquisicao,cod)
+	  cur.execute(insert_instruction, insert_values)
+	  cur.execute("commit")
+	  
+	  
 ## Marco de Entrega 08 em: (29/05/2019)<br>
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
