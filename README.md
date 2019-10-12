@@ -1011,18 +1011,18 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/1.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/2.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/3.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/4.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/cliente.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/compra.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/itens.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/produto.PNG)
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/5.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/6.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/7.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/8.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/9.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/10.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/11.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/12.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/produto_aquisicao.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/aquisicao.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/fornecedor.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/contato.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/tipo.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/ramo.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/pertence.PNG)
 
 
 
