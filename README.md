@@ -1015,7 +1015,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/compra.PNG)
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/itens.PNG)
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/produto.PNG)
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/5.PNG)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/categoria.PNG)
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/produto_aquisicao.PNG)
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/aquisicao.PNG)
 ![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/fornecedor.PNG)
