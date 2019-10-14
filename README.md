@@ -56,7 +56,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 > O modelo conceitual apresenta as entidades existentes no programa e os relacionamentos que elas possuem entre si.
     
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/111.jpeg)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/111.PNG)
     
 #### 5.1 Validação do Modelo Conceitual
     [Grupo01]: [Lucas Tejada Fabres e Caio Simão Lessa]
@@ -148,7 +148,7 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 > Aqui consta o modelo lógico do trabalho realizado pelo grupo.
 
-![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/222.jpeg)
+![Alt text](https://github.com/SS-SmartSales/trabalho01/blob/master/222.PNG)
 
 ### 7	MODELO FÍSICO<br>
 
