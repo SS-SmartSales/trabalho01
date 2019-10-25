@@ -1024,6 +1024,14 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+	select * from Cliente where codigo = 10;
+
+	select * from Cliente where sexo = 'F';
+
+	select data from Compra where cod_compra = 30; 
+
+	select * from Itens where qtd_venda = 20;
+
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
     b) Criar no mínimo 3 consultas com operadores aritméticos 
