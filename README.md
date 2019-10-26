@@ -1033,32 +1033,93 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 	select * from Itens where qtd_venda = 20;
 
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-    a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
-    b) Criar no mínimo 3 consultas com operadores aritméticos 
-    c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+	
+	select * from Produto as prod where preco_venda > 500.00 and preco_venda < 800.00 and fk_categoria_cod_categoria = 2;
+
+	select nome as Nome ,fk_categoria_cod_categoria as CodigoCategoria from Produto as prod where codigo_produto = 108 or codigo_produto = 159;
+
+	select count(fk_categoria_cod_categoria) from Produto where fk_categoria_cod_categoria = 3;
+
+	select count(fk_categoria_cod_categoria) as ProdsCategorias1_2 from Produto where not fk_categoria_cod_categoria = 3 and not fk_categoria_cod_categoria = 4 and not fk_categoria_cod_categoria = 5;
+
+	select codigo_contato as Codigo,fk_fornecedor_codigo as CodigoFornecedor from contato where contato = '321532396';
+
+	select sum(preco_aquisicao) from aquisicao where fk_fornecedor_codigo = 3;
+
+	select sum(qtd_aquisicao) as quabtidadea_aquisicao from produto_aquisicao where fk_produto_codigo_produto = 120;
+
+	select count(fk_fornecedor_codigo) as Quantidade_Fornecedores_Ramo from pertence where fk_ramo_cod_ramo = 19;
+
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
-    a) Criar outras 5 consultas que envolvam like ou ilike
-    b) Criar uma consulta para cada tipo de função data apresentada.
+	select comp.cod_compra from compra comp where extract(year from comp.data) >= 2010;
+
+
+	select cl.nome, cl.data_nascimento from cliente cl where extract(year from cl.data_nascimento) <= 2001 and cl.nome like 'C%';
+
+
+	select cl.nome, cl.data_nascimento from cliente cl where cl.nome ilike 'j%';
+
+	select sum(aq.preco_aquisicao) from aquisicao aq where extract(year from aq.data) >= 2010 and extract(year from aq.data) <= 2019;
+
+
+	select cl.codigo, cl.nome from cliente cl where extract(year from cl.data_nascimento) <=2007 and extract(year from cl.data_nascimento) >= 2002 and cl.sexo = 'F';
+
+	select avg(2019-extract(year from cl.data_nascimento)) from cliente cl;
 
 
     
 #### 9.5	ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
+	update fornecedor set nome = 'CaioShop' where nome = 'EsShop';
+
+	update contato set contato = '997755312' where codigo_contato = 10;
+
+	delete from cliente where codigo = 101;
 
 
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
-        a) Uma junção que envolva todas as tabelas possuindo no mínimo 3 registros no resultado
-        b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
-        
+
+	select * from itens order by 3 DESC;
+
+	select prod.codigo_produto, prod.nome, prod.preco_venda-aq.preco_aquisicao as lucro from produto  prod join produto_aquisicao pa on (prod.codigo_produto = pa.fk_PRODUTO_codigo_produto) join aquisicao aq on (aq.codigo = pa.fk_AQUISICAO_codigo) group by prod.codigo_produto, prod.nome, prod.preco_venda-aq.preco_aquisicao order by 1 ASC;
+
+
+	select cl.nome, count(comp.fk_CLIENTE_codigo) from cliente cl join compra comp on (comp.fk_CLIENTE_codigo = cl.codigo) group by cl.nome;
+
 
 ### ATUALIZAÇÃO DA DOCUMENTAÇÃO DOS SLIDES PARA APRESENTAÇAO SEMESTRAL (Mínimo 6 e Máximo 10)<br>
 
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
 
+	select cat.tipo, count(prod.fk_CATEGORIA_cod_categoria) from categoria cat join produto prod on (prod.fk_CATEGORIA_cod_categoria = cat.cod_categoria) group by cat.tipo;
+
+
+	select cat.cod_categoria, sum(it.qtd_venda) as qtd_vendas, count(it.cod_itens) as qtd_itens_categ from itens it join produto prod on (prod.codigo_produto = it.fk_PRODUTO_codigo_produto) join categoria cat on (prod.fk_CATEGORIA_cod_categoria = cat.cod_categoria) group by cat.cod_categoria order by 2 DESC limit 1;
+
+
+	select f.nome, count(codigo_produto) as qtd_produtos_fornecidos from fornecedor f join aquisicao aq on (f.codigo = aq.fk_FORNECEDOR_codigo) join produto_aquisicao pa on (aq.codigo = pa.fk_AQUISICAO_codigo) join produto prod on (prod.codigo_produto = pa.fk_PRODUTO_codigo_produto) group by f.nome order by 2 DESC;
+
 #### 9.8	CONSULTAS COM LEFT E RIGHT JOIN (Mínimo 4)<br>
+	select cl.nome, comp.cod_compra from compra comp right join cliente cl on (comp.fk_CLIENTE_codigo = cl.codigo) order by 1 ASC;
+
+	select f.nome, aq.codigo from fornecedor f left join aquisicao aq on (f.codigo = aq.fk_FORNECEDOR_codigo);
+
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
-        a) Uma junção que envolva Self Join
-        b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
+	create view cont_prod_cat as select cat.tipo, count(prod.fk_CATEGORIA_cod_categoria) from categoria cat join produto prod on (prod.fk_CATEGORIA_cod_categoria = cat.cod_categoria) group by cat.tipo;
+
+	select * from cont_prod_cat;
+
+
+	create view soma_cod3 as select sum(preco_aquisicao) from aquisicao where fk_fornecedor_codigo = 3;
+
+	select * from soma_cod3;
+
+
+	create view cat_mais_vendida asselect cat.cod_categoria, sum(it.qtd_venda) as qtd_vendas, count(it.cod_itens) as qtd_itens_categ from  itens it join produto prod on (prod.codigo_produto = it.fk_PRODUTO_codigo_produto) join categoria cat on (prod.fk_CATEGORIA_cod_categoria = cat.cod_categoria) group by cat.cod_categoria order by 2 DESC limit 1;
+
+	select * from cat_mais_vendida;
+
+
 #### 9.10	SUBCONSULTAS (Mínimo 3)<br>
 
 #### 9.11	LISTA DE CODIGOS DAS FUNÇÕES E TRIGGERS<br>
