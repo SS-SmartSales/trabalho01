@@ -1121,6 +1121,13 @@ Neste ponto consta o pdf com o rascunho da interface do nosso programa.  <br>
 
 
 #### 9.10	SUBCONSULTAS (Mínimo 3)<br>
+	SELECT C.tipo, AVG(P.preco_venda) as Media_PRECOS_VENDA FROM Categoria C INNER JOIN PRODUTO P ON (P.fk_categoria_cod_categoria = C.cod_categoria) WHERE C.cod_categoria IN (select distinct cod_categoria from Categoria)GROUP BY C.tipo;
+
+	select nome, data_nascimento from cliente where data_nascimento = (select MAX(data_nascimento) from cliente);
+
+	select nome, preco_venda from produto where preco_venda  = (select MAX(preco_venda) from produto);
+
+
 
 #### 9.11	LISTA DE CODIGOS DAS FUNÇÕES E TRIGGERS<br>
         Detalhamento sobre funcionalidade de cada código.
